@@ -26,6 +26,7 @@ namespace OmegaX
     /**
      * Minimal deterministic policy gate.
      * Unknown capabilities are denied by default.
+     * The v0.1 allowlist is intentionally explicit and narrow.
      */
     class OMEGAX_API FPolicy
     {
