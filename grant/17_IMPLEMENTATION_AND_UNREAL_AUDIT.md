@@ -35,13 +35,13 @@ The repository demonstrates an actual Unreal plugin source vertical slice contai
 
 The policy primitive is intentionally conservative: unknown capabilities are denied by default, and requests with missing capability/actor data or approval requirements are denied. The only explicitly authorized v0.1 capability is `Geometry.TransformActor`.
 
-The geometry operation now enforces policy internally before mutation and applies source-level safety validation, including NaN rejection and a 1000 Unreal Unit translation-magnitude limit.
+The geometry operation now enforces policy internally before mutation and applies source-level safety validation, including NaN/non-finite rejection, Unreal object validity checking, and a 1000 Unreal Unit translation-magnitude limit. If post-change verification fails, the source attempts recovery to the recorded pre-change location.
 
 ## 4. Unreal Engine integration status
 
 **Status: NOT YET PROVEN**
 
-The plugin structure follows Unreal's documented module model, including a `.uplugin`, `Build.cs`, `Private`/`Public` source structure, and a module implementation. Epic's documentation states that Unreal modules require these build/module components and that Unreal Build Tool uses module build rules as the build-system source of truth. This repository has not yet captured direct UBT compilation or runtime evidence.
+The plugin structure follows Unreal's documented module model, including a `.uplugin`, `Build.cs`, `Private`/`Public` source structure, and a module implementation. Epic's documentation states that Unreal modules require these build/module components and that Unreal Build Tool uses module build rules as the build-system source of truth. This repository has not yet captured direct UBT compilation or runtime evidence. citeturn0search0turn0search2turn0search6
 
 Therefore the following remain unverified:
 
@@ -51,6 +51,7 @@ Therefore the following remain unverified:
 - working policy behavior inside a running Unreal project;
 - successful positive geometry mutation inside Unreal Engine;
 - post-change verification in a running engine;
+- recovery after a forced verification failure;
 - functioning demonstrator;
 - measured Unreal Engine performance or quality results.
 
@@ -63,15 +64,16 @@ The geometry test definitions cover:
 1. policy denial before target access;
 2. null target rejection;
 3. excessive translation rejection;
-4. NaN translation rejection.
+4. NaN translation rejection;
+5. non-finite translation rejection.
 
 **Execution status: UNKNOWN.** A test definition is not reported as a passed test until Unreal Engine execution output is captured.
 
 ## 6. Consequence for the MegaGrants submission
 
-The project may now truthfully state that a minimal Unreal plugin vertical slice has been implemented at source level and that the repository contains source-level policy, authorization, geometry, safety, and negative-test artifacts. It must still be positioned as a development-and-validation project rather than a completed Unreal Engine product.
+The project may now truthfully state that a minimal Unreal plugin vertical slice has been implemented at source level and that the repository contains source-level policy, authorization, geometry, safety, recovery-attempt, and negative-test artifacts. It must still be positioned as a development-and-validation project rather than a completed Unreal Engine product.
 
-No numerical performance result, runtime success, demonstrator completion, or security guarantee may be presented as achieved without direct evidence.
+No numerical performance result, runtime success, demonstrator completion, recovery guarantee, or security guarantee may be presented as achieved without direct evidence.
 
 ## 7. Required next evidence gates
 
@@ -82,7 +84,7 @@ No numerical performance result, runtime success, demonstrator completion, or se
 5. executed policy and geometry automation-test results;
 6. positive `Geometry.TransformActor` execution against a real Actor;
 7. post-change verification evidence;
-8. failure/recovery evidence;
+8. forced verification-failure and recovery evidence;
 9. minimal demonstrator workflow;
 10. baseline and measured benchmark results;
 11. evidence links/media permitted by the application;
@@ -105,10 +107,12 @@ No numerical performance result, runtime success, demonstrator completion, or se
 | Unreal negative-test definitions present | VERIFIED |
 | Policy enforcement inside geometry operation | VERIFIED IN SOURCE |
 | Geometry safety validation in source | VERIFIED IN SOURCE |
+| Recovery attempt in source | VERIFIED IN SOURCE |
 | Unreal compilation | UNKNOWN |
 | Plugin load | UNKNOWN |
 | Automation test execution | UNKNOWN |
 | Positive geometry execution | UNKNOWN |
+| Recovery execution | UNKNOWN |
 | Runtime implementation proven | NO |
 | Unreal integration proven | NO |
 | Demonstrator proven | NO |
