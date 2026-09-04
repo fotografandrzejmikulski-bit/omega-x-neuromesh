@@ -6,11 +6,11 @@ This file is the final control point for the Epic MegaGrants application package
 
 ## Current official program timing
 
-As checked on 2026-09-03, Epic's official MegaGrants page lists 2026 Cycle 2 submissions as June 29–September 4, 2026, closing at 11:59 PM ET. This must be rechecked immediately before submission.
+As rechecked on 2026-09-04, Epic's official MegaGrants page lists 2026 Cycle 2 submissions as June 29–September 4, 2026, closing at 11:59 PM ET. This must be rechecked immediately before submission.
 
 ## Repository status
 
-The repository contains the grant dossier, supporting claims/evidence controls, architecture/security documents, and grant-specific review materials. No additional product infrastructure is required for the grant package at this stage.
+The repository contains the grant dossier, supporting claims/evidence controls, architecture/security documents, grant-specific review materials, a source-implemented OMEGA-X Unreal Engine vertical slice, and a minimal C++ verification host. No additional product infrastructure is required for the grant package at this stage.
 
 ## Readiness matrix
 
@@ -18,30 +18,30 @@ The repository contains the grant dossier, supporting claims/evidence controls, 
 |---|---|---:|---|
 | Grant structure and document set | COMPLETE | No | None |
 | Project scope | DRAFTED | Yes | Confirm final scope against actual intended work |
-| Unreal Engine relevance | IN PROGRESS | Yes | Provide concrete UE/UEFN use and integration evidence |
-| Current implementation state | UNKNOWN | Yes | Provide current snapshot of what actually exists |
-| Demonstrator / build / screenshots / video | UNKNOWN | Yes | Attach or link the strongest real artifact available |
+| Unreal Engine relevance | IN PROGRESS | Yes | Provide concrete UE integration and runtime evidence |
+| Current implementation state | VERIFIED AT SOURCE LEVEL | Yes | Preserve distinction between source implementation and runtime validation |
+| Demonstrator / build / screenshots / video | NOT VERIFIED | Yes | Attach or link the strongest real artifact available |
 | KPI and validation methodology | DRAFTED | Yes | Replace targets with measured baseline/results where available |
 | Budget framework | COMPLETE AS FRAMEWORK | Yes | Enter real cost basis and requested amount; do not invent numbers |
 | Applicant eligibility | UNKNOWN | Yes | Confirm against the application and applicant circumstances |
-| Applicant identity/contact/legal data | UNKNOWN | Yes | Complete applicant data fields |
+| Applicant identity/contact/legal data | PARTIAL | Yes | Verify and complete applicant data fields |
 | Previous/other funding | UNKNOWN | Yes | Confirm disclosure status |
 | Technical evidence register | IN PROGRESS | Yes | Attach evidence for material technical claims |
-| Claim audit | READY FOR FINAL INPUT | Yes | Run after evidence and applicant data are supplied |
-| Reviewer red-team | READY FOR FINAL INPUT | Yes | Run against the completed application, not hypothetical facts |
+| Claim audit | UPDATED FOR CURRENT SOURCE EVIDENCE | Yes | Finalize only after remaining factual gates close |
+| Reviewer red-team | EXECUTED FOR CURRENT SOURCE STATE | Yes | Re-run against final application text after factual gates close |
 | Final submission checklist | DRAFTED | Yes | Mark only from verified evidence |
-| Current deadline verification | VERIFIED TODAY | Yes | Recheck immediately before submission |
+| Current deadline verification | VERIFIED 2026-09-04 | Yes | Recheck immediately before submission |
 
 ## Non-negotiable evidence blockers
 
-1. Current project snapshot.
-2. Concrete Unreal Engine / UEFN relevance and integration point.
-3. Current demonstrator or equivalent artifact.
-4. Actual work-package scope to be funded.
-5. Real cost basis for the requested amount.
-6. Applicant eligibility and identity/application data.
-7. Previous or other funding disclosure, if applicable.
-8. Supporting evidence for material technical claims.
+1. Concrete Unreal Engine runtime/build evidence.
+2. Current demonstrator or equivalent artifact.
+3. Actual work-package scope to be funded.
+4. Real cost basis for the requested amount.
+5. Applicant eligibility and complete application data.
+6. Previous or other funding disclosure, if applicable.
+7. Supporting evidence for material technical claims.
+8. Final application text and final claim/reviewer pass after the factual gates are closed.
 
 ## Funding rule
 
@@ -49,7 +49,7 @@ Requested funding must be derived from the actual defensible development cost an
 
 ## Claim rule
 
-No claim may be upgraded from UNKNOWN, TARGET, ASSUMPTION, or HYPOTHESIS to VERIFIED/FACT without evidence. No benchmark result may be stated before measurement. No completed implementation may be implied where only a proposal exists.
+No claim may be upgraded from UNKNOWN, TARGET, ASSUMPTION, or HYPOTHESIS to VERIFIED/FACT without evidence. No benchmark result may be stated before measurement. No completed implementation may be implied where only a proposal or source-level implementation exists.
 
 ## Completion criterion
 
@@ -57,4 +57,4 @@ The dossier is submission-ready only when every blocking item in `grant/09_FINAL
 
 ## Operational conclusion
 
-The grant documentation system itself is prepared. The remaining blockers are factual inputs and evidence that only the applicant/project artifacts can supply. Adding more generic documentation or product infrastructure would not increase grant readiness and is therefore out of scope.
+The grant documentation system and source-level prototype are prepared. The remaining blockers are runtime evidence and factual applicant/application inputs. Adding more generic documentation or unrelated product infrastructure would not increase grant readiness and is therefore out of scope.
