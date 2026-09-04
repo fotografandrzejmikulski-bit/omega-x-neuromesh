@@ -26,13 +26,16 @@ REQUEST
   → AUDIT
 ```
 
-The current implementation exposes the mutation primitive separately from policy evaluation. Callers must obtain an explicit policy authorization before invoking the operation.
+Policy evaluation is enforced inside the geometry operation before any state mutation. The request carries the policy inputs, so callers cannot obtain an authorized mutation merely by bypassing an external policy call.
 
 ## Safety boundary
 
 The implementation:
 
+- evaluates policy before touching the target;
 - rejects a null target;
+- rejects NaN translation input;
+- rejects translation whose magnitude exceeds the v0.1 safety limit of 1000 Unreal units;
 - records the pre-change location;
 - applies translation only;
 - reads the resulting location after mutation;
@@ -50,8 +53,9 @@ This contract does not yet provide a complete transactional rollback mechanism o
 |---|---|---|
 | Geometry operation header exists | VERIFIED FACT | PASS |
 | Geometry operation implementation exists | VERIFIED FACT | PASS |
+| Policy evaluation is enforced inside the operation | VERIFIED FACT | PASS |
 | Null-target negative test exists | VERIFIED FACT | PASS |
-| Policy and geometry are architecturally separated | OBSERVATION | PASS |
+| Safety bound is implemented in source | VERIFIED FACT | PASS |
 | Unreal compilation succeeds | MEASUREMENT | UNKNOWN |
 | Positive Actor mutation executes in Unreal | MEASUREMENT | UNKNOWN |
 | Post-change verification passes in Unreal | MEASUREMENT | UNKNOWN |
