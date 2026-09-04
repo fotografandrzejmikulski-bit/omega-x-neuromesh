@@ -1,6 +1,6 @@
 # Cover Letter — Epic MegaGrants
 
-## Final candidate — factual gate closed for applicant identity
+## Working draft — final submission gates remain open
 
 Dear Epic MegaGrants Team,
 
