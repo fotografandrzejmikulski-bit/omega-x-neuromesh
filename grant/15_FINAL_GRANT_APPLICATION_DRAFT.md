@@ -302,6 +302,7 @@ At completion, the project aims to provide:
 
 The following applicant facts have been confirmed and should be carried into the final form where applicable:
 
+- **Applicant / legal name:** Andrzej Mikulski
 - **Applicant type:** Individual / natural person
 - **Country:** Poland
 - **Contact email:** mojealterego21@gmail.com
@@ -312,7 +313,6 @@ The following applicant facts have been confirmed and should be carried into the
 
 The following remain form-dependent or require direct applicant/legal confirmation:
 
-- **Legal name / identity format:** [VERIFY AGAINST OFFICIAL FORM]
 - **Website / portfolio:** [ONLY IF REQUIRED OR IF A DISTINCT FIELD EXISTS]
 - **Unreal/Epic account context:** [VERIFY IF REQUIRED]
 - **Team members:** [SOLO; ADD ONLY IF FORM REQUIRES FUTURE/CONTRIBUTING PERSONNEL DISCLOSURE]
@@ -364,12 +364,12 @@ The requested MegaGrants support should enable the project to move from its curr
 - [ ] final non-labor cost basis calculated or explicitly excluded;
 - [ ] requested amount calculated from defensible cost and current program rules;
 - [ ] applicant eligibility verified;
-- [ ] legal/applicant identity format verified against official form;
+- [x] legal/applicant identity confirmed by applicant: Andrzej Mikulski;
 - [x] prior Epic MegaGrant disclosure confirmed: No;
 - [x] other project funding disclosure confirmed: No;
 - [ ] material technical claims evidenced;
 - [x] repository URL verified in project records;
 - [x] claim audit updated to source-evidence boundaries;
 - [x] reviewer red-team executed against current project state;
-- [ ] official Epic MegaGrants page rechecked immediately before submission;
+- [x] official Epic MegaGrants page rechecked 2026-09-04;
 - [ ] final human review completed;
