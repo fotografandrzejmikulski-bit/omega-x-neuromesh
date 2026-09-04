@@ -79,3 +79,23 @@ bool FOmegaXGeometryNaNTranslationTest::RunTest(const FString& Parameters)
     TestEqual(TEXT("NaN input is rejected"), Result.Reason, FString(TEXT("Translation contains NaN")));
     return true;
 }
+
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(
+    FOmegaXGeometryInfiniteTranslationTest,
+    "OmegaX.Geometry.InfiniteTranslationDenied",
+    EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::SmokeFilter)
+
+bool FOmegaXGeometryInfiniteTranslationTest::RunTest(const FString& Parameters)
+{
+    OmegaX::FGeometryTransformRequest Request;
+    Request.Target = nullptr;
+    Request.Translation = FVector(TNumericLimits<float>::Infinity(), 0.0f, 0.0f);
+    Request.PolicyRequest.Capability = TEXT("Geometry.TransformActor");
+    Request.PolicyRequest.Actor = TEXT("TestActor");
+
+    const OmegaX::FGeometryTransformResult Result = OmegaX::FGeometryTransform::Apply(Request);
+
+    TestFalse(TEXT("Infinite translation is not applied"), Result.bApplied);
+    TestEqual(TEXT("Non-finite input is rejected"), Result.Reason, FString(TEXT("Translation contains non-finite values")));
+    return true;
+}
