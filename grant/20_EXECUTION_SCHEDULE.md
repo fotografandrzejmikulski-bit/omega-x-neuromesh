@@ -6,9 +6,9 @@ Close the remaining MegaGrants application gates as quickly as possible without 
 
 ## Schedule principle
 
-The project duration should be the shortest realistic period that can complete the funded work packages and generate reproducible evidence. No arbitrary 6/9/12-month duration is assumed merely to fill the form.
+The project duration is the shortest defensible period that can complete the funded work packages and generate reproducible evidence. For planning purposes, the working target is **6 months**. This is a planning target, not a claim that the project will require exactly six calendar months.
 
-## Proposed work sequence
+## Work sequence
 
 ### WP1 — Governance and technical specification
 - Freeze v0.1 policy and authorization scope.
@@ -17,7 +17,8 @@ The project duration should be the shortest realistic period that can complete t
 - Establish acceptance criteria.
 
 ### WP2 — Constrained Unreal prototype
-- Build the minimal verification host in Unreal Engine 5.8.
+- Obtain a suitable Unreal Engine 5.8 development environment.
+- Build the minimal verification host.
 - Compile the plugin and host.
 - Load the plugin.
 - Execute negative policy/safety tests.
@@ -44,10 +45,12 @@ The project duration should be the shortest realistic period that can complete t
 
 The applicant currently does not have an Unreal Engine build environment available. Therefore WP2 runtime evidence cannot be represented as completed at this stage.
 
+## Planning target
+
+**6 months**, with the explicit objective of completing earlier if the required development environment and resources permit it without reducing validation quality.
+
+The schedule is intentionally front-loaded around the smallest technically meaningful prototype. No broad agent platform is required before the constrained Unreal primitive is build-verified.
+
 ## Submission strategy
 
 If an Unreal Engine environment becomes available before submission, perform only the minimum verification needed to close the highest-value evidence gates. If it does not, retain the source-level evidence boundary and present the funded work as development-and-validation rather than as a completed runtime product.
-
-## Duration status
-
-**OPEN — shortest defensible duration to be derived from final funded scope and verified resource availability.**
