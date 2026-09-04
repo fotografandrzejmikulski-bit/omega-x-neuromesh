@@ -9,44 +9,45 @@
 - `docs/ARCHITECTURE.md`
 - `security/THREAT_MODEL.md`
 - `grant/03_KPI_AND_VALIDATION.md`
+- `grant/05_CLAIM_AUDIT.md`
+- `grant/09_FINAL_SUBMISSION_MATRIX.md`
+- `grant/11_REVIEWER_DEFENSE_MATRIX.md`
+- `grant/13_EVIDENCE_REQUEST_LIST.md`
+- `grant/14_FINAL_DOSSIER_STATUS.md`
 - `grant/17_IMPLEMENTATION_AND_UNREAL_AUDIT.md`
+- `grant/18_PROTOTYPE_IMPLEMENTATION_STATUS.md`
 - `docs/UE_BUILD_VERIFICATION.md`
-- grant-critical status and evidence gate
 - current official Epic MegaGrants program page
 
 ## Result
 
-**Architecture model: PASS as specification / NOT PROOF OF IMPLEMENTATION**
+**Architecture model: PASS as specification / NOT PROOF OF RUNTIME IMPLEMENTATION**
 
 The architecture defines explicit separation between agent proposal, policy evaluation, safety, authorization, execution, verification, and audit. State-changing operations are specified with snapshot, validation, apply, verify, and commit stages. The architecture also explicitly requires deterministic mechanisms where they are stronger than AI for the relevant operation.
 
 **Security model: PASS as threat-model baseline / NOT PROOF OF SECURITY**
 
-The threat model covers prompt/tool injection, credential leakage, excessive agent privileges, destructive mutation, malicious dependencies, evidence contamination, documentation drift, and unvalidated automation. It defines least privilege, secret protection, authorization, rollback, and incident-response expectations. Security testing remains required before any production-readiness claim.
+The threat model covers prompt/tool injection, credential leakage, excessive agent privileges, destructive mutation, malicious dependencies, evidence contamination, documentation drift, and unvalidated automation. Security testing remains required before any production-readiness claim.
 
 **KPI/validation model: PASS as methodology / RESULTS NOT YET AVAILABLE**
 
-The KPI plan defines measurable categories and requires a baseline before final numerical improvement targets where no validated baseline exists. It also requires environment/version/task documentation and raw evidence. No KPI is treated as achieved before measurement.
+The KPI plan defines measurable categories and requires a baseline before final numerical improvement targets where no validated baseline exists. No KPI is treated as achieved before measurement.
 
 **Implementation audit: SOURCE PRESENT / EXECUTION NOT VERIFIED**
 
-The repository now contains a minimal Unreal Engine plugin manifest, module build file, module implementation, deterministic policy source, and negative automation-test definition. This establishes source-level implementation artifacts, but not successful Unreal Engine compilation, plugin loading, test execution, runtime behavior, demonstrator readiness, or benchmark performance.
+The repository contains a source-implemented Unreal Engine plugin vertical slice and a minimal C++ verification host. This establishes source-level implementation artifacts, but not successful Unreal Engine compilation, plugin loading, test execution, runtime behavior, demonstrator readiness, or benchmark performance.
 
-## Critical findings
+## Consistency findings
 
-1. The repository contains a coherent architecture/security/validation specification.
-2. A minimal Unreal Engine plugin implementation is now present in the repository.
-3. The implementation has not yet been verified by direct Unreal Engine build/runtime execution in the available workflow.
-4. The negative automation test is defined but has not been proven to pass through captured Unreal Engine execution output.
-5. No numerical project-performance result should be stated as achieved without benchmark evidence.
-6. The grant dossier still requires project-specific evidence listed in `grant/13_EVIDENCE_REQUEST_LIST.md`.
-7. The current application must therefore remain a development-and-validation proposal rather than an implementation-complete claim.
+1. `grant/05_CLAIM_AUDIT.md`, `grant/09_FINAL_SUBMISSION_MATRIX.md`, `grant/11_REVIEWER_DEFENSE_MATRIX.md`, `grant/13_EVIDENCE_REQUEST_LIST.md`, `grant/17_IMPLEMENTATION_AND_UNREAL_AUDIT.md`, and `grant/18_PROTOTYPE_IMPLEMENTATION_STATUS.md` consistently distinguish source implementation from runtime validation.
+2. `grant/14_FINAL_DOSSIER_STATUS.md` has been synchronized so that current implementation is recorded as verified at source level rather than UNKNOWN.
+3. Reviewer red-team status is recorded as executed for the current source state; it must be rerun against the final application text after factual application gates close.
+4. No numerical performance result, runtime success, demonstrator completion, recovery guarantee, or security guarantee is supported as an achieved result.
+5. The v0.1 authorization model remains explicitly limited by lack of target-resource binding; this is a documented least-privilege limitation.
 
 ## Epic program verification
 
-The current official MegaGrants page shows Cycle 2 submission dates of June 29–September 4, 2026, with submissions closing at 11:59 PM ET. It identifies smaller teams, solo developers, and innovators using Epic technology, and includes an "Other projects" category covering projects that advance real-time 3D or improve the 3D community.
-
-The final submission must recheck the official page immediately before submission. No historical funding ceiling is used as a current limit.
+The current official MegaGrants page shows Cycle 2 submissions from June 29 through September 4, 2026, closing at 11:59 PM ET. It identifies smaller teams, solo developers, and innovators using Epic technology, and includes an "Other projects" category covering projects that advance real-time 3D or improve the 3D community. The official page must still be rechecked immediately before submission.
 
 ## Gate status
 
@@ -56,6 +57,7 @@ The final submission must recheck the official page immediately before submissio
 | Threat model baseline | PASS |
 | KPI methodology | PASS |
 | Unreal plugin source present | PASS |
+| Minimal verification host present | PASS |
 | Evidence completeness | BLOCKED |
 | Unreal compilation | BLOCKED — NO EXECUTION EVIDENCE |
 | Plugin load | BLOCKED — NO EXECUTION EVIDENCE |
@@ -65,11 +67,11 @@ The final submission must recheck the official page immediately before submissio
 | Benchmark results | BLOCKED |
 | Real cost basis | BLOCKED |
 | Applicant/eligibility data | BLOCKED |
-| Final claim audit | PENDING factual evidence |
-| Reviewer red-team | PENDING factual evidence |
+| Final claim audit | UPDATED FOR CURRENT SOURCE EVIDENCE; FINAL PASS PENDING FACTUAL GATES |
+| Reviewer red-team | EXECUTED FOR CURRENT SOURCE STATE; FINAL PASS PENDING FINAL APPLICATION |
 | Final application | NOT FINAL |
 | Final cover letter | NOT FINAL |
 
 ## Decision
 
-Continue only with evidence-backed completion. Do not fabricate missing build, runtime, benchmark, budget, eligibility, or applicant data. The next engineering gate is direct Unreal Engine build/test verification. After execution evidence is captured, continue to the minimal demonstrator and measured validation workflow. Only after all factual gates are closed should the final claim audit and reviewer red-team be performed, followed by the final grant application and cover letter as the last project artifacts.
+Continue only with evidence-backed completion. Do not fabricate missing build, runtime, benchmark, budget, eligibility, or applicant data. The next engineering gate remains direct Unreal Engine build/test verification. If runtime evidence cannot be produced in the available environment, preserve the source-level evidence boundary and proceed only with an application that truthfully presents the work as a development-and-validation proposal. Final claim audit and reviewer red-team must be applied to the actual final application text before submission; the final grant application and cover letter remain the last project artifacts.
