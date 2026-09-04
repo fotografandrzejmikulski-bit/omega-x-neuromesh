@@ -2,7 +2,7 @@
 
 | Requirement | Source | Owner | Status | Blocking? |
 |---|---|---|---|---|
-| Current MegaGrants cycle/deadline | Official Epic MegaGrants page | Application | VERIFIED — rechecked 2026-09-04; Cycle 2 closes Sep 4, 2026 at 11:59 PM ET | YES |
+| Current MegaGrants cycle/deadline | Official Epic MegaGrants page | Application | VERIFIED — rechecked 2026-09-04; Cycle 2 submission closes Sep 4, 2026 at 11:59 PM ET; Epic localized pages show the corresponding Central European deadline as Sep 5, 2026 at 05:59 CEST | YES |
 | Applicant eligibility | Official Epic FAQ/application | Applicant | TBD — live form-level verification still required | YES |
 | Unreal Engine relevance | Project proposal + repository integration artifacts | Project | VERIFIED AT SOURCE LEVEL — runtime proof remains a funded validation objective | YES |
 | Concrete project scope | Project plan + prototype status | Project | VERIFIED — bounded WP1–WP4 scope | NO |
@@ -48,7 +48,7 @@ A blocking item may not be marked complete without supporting evidence or explic
 
 ## Current timing
 
-The official Epic MegaGrants program page was rechecked on 2026-09-04 and currently lists Cycle 2 submissions through September 4, 2026, closing at 11:59 PM ET. citeturn0news0
+The official Epic MegaGrants program page was rechecked on 2026-09-04. Epic's current Cycle 2 schedule lists submissions from June 29 through September 4, 2026, with the English/Japan-facing schedule specifying 11:59 PM ET and localized European pages showing the corresponding Central European deadline as September 5, 2026 at 05:59 CEST. citeturn0search0turn0search3turn0search4
 
 ## Completion rule
 
