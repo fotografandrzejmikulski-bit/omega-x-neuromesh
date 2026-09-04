@@ -1,0 +1,19 @@
+{
+  "FileVersion": 3,
+  "EngineAssociation": "5.8",
+  "Category": "OMEGA-X",
+  "Description": "Minimal host project for OMEGA-X / NeuroMesh Unreal Engine build and automation verification.",
+  "Modules": [
+    {
+      "Name": "OmegaXVerification",
+      "Type": "Runtime",
+      "LoadingPhase": "Default"
+    }
+  ],
+  "Plugins": [
+    {
+      "Name": "OmegaX",
+      "Enabled": true
+    }
+  ]
+}
