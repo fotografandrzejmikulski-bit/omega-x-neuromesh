@@ -11,11 +11,6 @@ namespace OmegaX
             return { false, FVector::ZeroVector, FVector::ZeroVector, PolicyDecision.Reason };
         }
 
-        if (Request.Target == nullptr)
-        {
-            return { false, FVector::ZeroVector, FVector::ZeroVector, TEXT("Target actor is required") };
-        }
-
         if (Request.Translation.ContainsNaN())
         {
             return { false, FVector::ZeroVector, FVector::ZeroVector, TEXT("Translation contains NaN") };
@@ -24,6 +19,11 @@ namespace OmegaX
         if (Request.Translation.SizeSquared() > FMath::Square(MaxTranslationMagnitude))
         {
             return { false, FVector::ZeroVector, FVector::ZeroVector, TEXT("Translation exceeds safety limit") };
+        }
+
+        if (Request.Target == nullptr)
+        {
+            return { false, FVector::ZeroVector, FVector::ZeroVector, TEXT("Target actor is required") };
         }
 
         const FVector PreviousLocation = Request.Target->GetActorLocation();
