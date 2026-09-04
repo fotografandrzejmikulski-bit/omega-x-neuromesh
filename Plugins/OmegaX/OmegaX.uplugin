@@ -1,0 +1,18 @@
+{
+  "FileVersion": 3,
+  "Version": 1,
+  "VersionName": "0.1.0",
+  "FriendlyName": "OMEGA-X",
+  "Description": "Verification-first policy and authorization layer for controlled Unreal Engine automation.",
+  "Category": "Tools",
+  "CreatedBy": "OMEGA-X / NeuroMesh",
+  "CanContainContent": false,
+  "IsBetaVersion": true,
+  "Modules": [
+    {
+      "Name": "OmegaX",
+      "Type": "Runtime",
+      "LoadingPhase": "Default"
+    }
+  ]
+}
