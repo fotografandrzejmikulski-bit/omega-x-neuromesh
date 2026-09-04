@@ -5,9 +5,25 @@ namespace OmegaX
 {
     FGeometryTransformResult FGeometryTransform::Apply(const FGeometryTransformRequest& Request)
     {
+        const FPolicyDecision PolicyDecision = FPolicy::Evaluate(Request.PolicyRequest);
+        if (PolicyDecision.Decision != EDecision::Allow)
+        {
+            return { false, FVector::ZeroVector, FVector::ZeroVector, PolicyDecision.Reason };
+        }
+
         if (Request.Target == nullptr)
         {
             return { false, FVector::ZeroVector, FVector::ZeroVector, TEXT("Target actor is required") };
+        }
+
+        if (Request.Translation.ContainsNaN())
+        {
+            return { false, FVector::ZeroVector, FVector::ZeroVector, TEXT("Translation contains NaN") };
+        }
+
+        if (Request.Translation.SizeSquared() > FMath::Square(MaxTranslationMagnitude))
+        {
+            return { false, FVector::ZeroVector, FVector::ZeroVector, TEXT("Translation exceeds safety limit") };
         }
 
         const FVector PreviousLocation = Request.Target->GetActorLocation();
