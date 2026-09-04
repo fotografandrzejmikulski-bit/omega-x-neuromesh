@@ -24,6 +24,8 @@ A request is denied when:
 3. explicit approval is required but has not been supplied;
 4. the capability is not explicitly authorized.
 
+The only explicitly authorized v0.1 capability is `Geometry.TransformActor`. All other capabilities remain denied by default.
+
 This is a constrained security primitive, not a complete authorization system.
 
 ## 3. Evidence classification
@@ -34,7 +36,9 @@ This is a constrained security primitive, not a complete authorization system.
 | C++ module definition exists | VERIFIED FACT | PASS |
 | Policy API exists | VERIFIED FACT | PASS |
 | Default-deny behavior is implemented in source | VERIFIED FACT | PASS |
+| Explicit `Geometry.TransformActor` allowlist entry exists in source | VERIFIED FACT | PASS |
 | Negative-case tests are defined | VERIFIED FACT | PASS |
+| Positive authorization test is defined | VERIFIED FACT | PASS |
 | Plugin compiles in a real Unreal Engine environment | MEASUREMENT | UNKNOWN |
 | Automation tests pass in Unreal Engine | MEASUREMENT | UNKNOWN |
 | Geometry workflow exists | TARGET | NOT IMPLEMENTED |
@@ -53,7 +57,8 @@ Required evidence:
 - successful automation-test execution;
 - captured test output;
 - minimal Unreal project demonstrating plugin loading;
-- failure-case evidence for denied requests.
+- failure-case evidence for denied requests;
+- positive-case evidence that `Geometry.TransformActor` is authorized by the policy gate.
 
 ## 5. Scope rule
 
