@@ -1,10 +1,24 @@
 # Unreal Engine Build Verification Protocol
 
-**Status:** UNVERIFIED — execution requires a local Unreal Engine environment.
+**Status:** UNVERIFIED — execution still requires a local Unreal Engine environment.
 
 ## Purpose
 
 This protocol defines the minimum reproducible evidence required before OMEGA-X claims successful Unreal Engine compilation, plugin loading, or automated-test execution.
+
+## Verification host
+
+A minimal C++ host project is now included at `OmegaXVerification/` so the repository has a concrete build/test target rather than only a plugin source tree.
+
+Host files:
+
+- `OmegaXVerification/OmegaXVerification.uproject`
+- `OmegaXVerification/Source/OmegaXVerification/OmegaXVerification.Build.cs`
+- `OmegaXVerification/Source/OmegaXVerification/Private/OmegaXVerificationModule.cpp`
+- `OmegaXVerification/Source/OmegaXVerification.Target.cs`
+- `OmegaXVerification/Source/OmegaXVerificationEditor.Target.cs`
+
+The host enables the `OmegaX` plugin and declares the plugin module as a dependency. This establishes the intended verification topology; it does **not** constitute a successful Unreal build.
 
 ## Repository prerequisites
 
@@ -27,7 +41,7 @@ Record the exact:
 1. Unreal Engine version.
 2. Operating system and architecture.
 3. Compiler/toolchain version.
-4. Test host project and commit.
+4. Verification host project and commit.
 5. Plugin loading result.
 6. Build result and complete relevant log excerpt.
 7. Automation test command/filter used.
@@ -39,10 +53,10 @@ Record the exact:
 
 ## Minimum acceptance sequence
 
-1. Place/enable the plugin in a valid Unreal Engine project.
+1. Open `OmegaXVerification/OmegaXVerification.uproject` with the selected Unreal Engine installation.
 2. Generate/update project files as required by the selected host environment.
-3. Build the host project and plugin with Unreal Build Tool through the normal project build path.
-4. Launch the editor or appropriate test target.
+3. Build the `OmegaXVerificationEditor` target with Unreal Build Tool through the normal project build path.
+4. Confirm the `OmegaX` plugin loads without module/build errors.
 5. Run the policy and geometry automation tests.
 6. Execute the positive bounded `Geometry.TransformActor` workflow against a real Actor.
 7. Preserve the raw build/test/runtime output as evidence.
@@ -51,15 +65,17 @@ Record the exact:
 
 ## Current result
 
-No Unreal Engine build or runtime execution has been performed by this repository workflow. Therefore:
+The repository now contains a concrete Unreal verification host, but no Unreal Engine build or runtime execution has been performed by this repository workflow. Therefore:
 
+- host project structure: **VERIFIED IN SOURCE**
+- plugin source structure: **VERIFIED IN SOURCE**
 - compilation: **UNKNOWN**
 - plugin load: **UNKNOWN**
 - automation test execution: **UNKNOWN**
 - runtime policy behavior: **UNKNOWN**
 - runtime geometry behavior: **UNKNOWN**
 
-The source files demonstrate an implementation attempt, not successful engine integration.
+The source files and host project demonstrate a prepared verification target, not successful engine integration.
 
 ## Evidence rule
 
@@ -67,8 +83,8 @@ A green static inspection is not a substitute for an Unreal Engine build. A sour
 
 ## Official technical basis
 
-Epic's Unreal Engine documentation states that each module requires a `Build.cs` file and a module implementation, and that Unreal Build Tool uses module build rules rather than the IDE solution as the build-system source of truth. Epic's plugin documentation describes plugins as collections of code/data that can extend Unreal Engine and be enabled per project.
+Epic's Unreal Engine documentation states that each module requires a `Build.cs` file and module implementation, and that Unreal Build Tool uses module build rules rather than the IDE solution as the build-system source of truth. Epic's plugin documentation describes source plugins as project-integrated code that is compiled by UBT when the host project is compiled.
 
 - https://dev.epicgames.com/documentation/en-us/unreal-engine/unreal-engine-modules
 - https://dev.epicgames.com/documentation/en-us/unreal-engine/how-to-make-a-gameplay-module-in-unreal-engine
-- https://dev.epicgames.com/documentation/unreal-engine/plugins-in-unreal-engine
+- https://dev.epicgames.com/documentation/en-us/unreal-engine/plugins-in-unreal-engine
