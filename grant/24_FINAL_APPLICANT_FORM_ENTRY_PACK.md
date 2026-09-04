@@ -10,10 +10,10 @@
 **Individual (myself)**
 
 ### How did you hear about Epic MegaGrants?
-**APPLICANT MUST SELECT THE TRUE OPTION FROM THE LIVE DROPDOWN.** This cannot be inferred from the project records.
+**Google Search** — select this or the closest equivalent option in the live dropdown.
 
 ### Please explain how you heard about us
-**APPLICANT MUST PROVIDE A TRUTHFUL ONE-SENTENCE EXPLANATION MATCHING THE SELECTED OPTION.** Do not invent this answer.
+**I discovered Epic MegaGrants by chance while searching on Google.**
 
 ### Country
 **Poland**
@@ -132,7 +132,7 @@ Optional; applicant choice.
 
 ## 6. Blocking items before clicking Submit
 
-1. Choose the truthful “How did you hear about Epic MegaGrants?” option and explanation.
+1. Confirm the live dropdown's exact label corresponding to **Google Search**; use that option and the explanation above.
 2. Confirm the exact live Project Type dropdown option.
 3. Provide a reviewer-accessible Project media link. A private GitHub repository does not satisfy reviewer accessibility by itself.
 4. Confirm the live Project phase option.
