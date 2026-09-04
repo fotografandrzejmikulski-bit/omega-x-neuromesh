@@ -9,6 +9,8 @@
 - `docs/ARCHITECTURE.md`
 - `security/THREAT_MODEL.md`
 - `grant/03_KPI_AND_VALIDATION.md`
+- `grant/17_IMPLEMENTATION_AND_UNREAL_AUDIT.md`
+- `docs/UE_BUILD_VERIFICATION.md`
 - grant-critical status and evidence gate
 - current official Epic MegaGrants program page
 
@@ -26,13 +28,19 @@ The threat model covers prompt/tool injection, credential leakage, excessive age
 
 The KPI plan defines measurable categories and requires a baseline before final numerical improvement targets where no validated baseline exists. It also requires environment/version/task documentation and raw evidence. No KPI is treated as achieved before measurement.
 
+**Implementation audit: SOURCE PRESENT / EXECUTION NOT VERIFIED**
+
+The repository now contains a minimal Unreal Engine plugin manifest, module build file, module implementation, deterministic policy source, and negative automation-test definition. This establishes source-level implementation artifacts, but not successful Unreal Engine compilation, plugin loading, test execution, runtime behavior, demonstrator readiness, or benchmark performance.
+
 ## Critical findings
 
 1. The repository contains a coherent architecture/security/validation specification.
-2. The specification does not establish that the proposed Unreal Engine demonstrator is already implemented.
-3. No numerical project-performance result should be stated as achieved without benchmark evidence.
-4. The grant dossier still requires project-specific evidence listed in `grant/13_EVIDENCE_REQUEST_LIST.md`.
-5. The current application must therefore remain a development-and-validation proposal rather than an implementation-complete claim.
+2. A minimal Unreal Engine plugin implementation is now present in the repository.
+3. The implementation has not yet been verified by direct Unreal Engine build/runtime execution in the available workflow.
+4. The negative automation test is defined but has not been proven to pass through captured Unreal Engine execution output.
+5. No numerical project-performance result should be stated as achieved without benchmark evidence.
+6. The grant dossier still requires project-specific evidence listed in `grant/13_EVIDENCE_REQUEST_LIST.md`.
+7. The current application must therefore remain a development-and-validation proposal rather than an implementation-complete claim.
 
 ## Epic program verification
 
@@ -47,10 +55,14 @@ The final submission must recheck the official page immediately before submissio
 | Architecture specification | PASS |
 | Threat model baseline | PASS |
 | KPI methodology | PASS |
+| Unreal plugin source present | PASS |
 | Evidence completeness | BLOCKED |
-| Current implementation proof | BLOCKED |
+| Unreal compilation | BLOCKED — NO EXECUTION EVIDENCE |
+| Plugin load | BLOCKED — NO EXECUTION EVIDENCE |
+| Automation test execution | BLOCKED — NO EXECUTION EVIDENCE |
 | Concrete Unreal integration evidence | BLOCKED |
 | Demonstrator evidence | BLOCKED |
+| Benchmark results | BLOCKED |
 | Real cost basis | BLOCKED |
 | Applicant/eligibility data | BLOCKED |
 | Final claim audit | PENDING factual evidence |
@@ -60,4 +72,4 @@ The final submission must recheck the official page immediately before submissio
 
 ## Decision
 
-Continue only with evidence-backed completion. Do not fabricate missing implementation, benchmark, budget, eligibility, or applicant data. Once the factual gates are closed, perform the final claim audit and reviewer red-team, then produce the final grant application and cover letter as the last project artifacts.
+Continue only with evidence-backed completion. Do not fabricate missing build, runtime, benchmark, budget, eligibility, or applicant data. The next engineering gate is direct Unreal Engine build/test verification. After execution evidence is captured, continue to the minimal demonstrator and measured validation workflow. Only after all factual gates are closed should the final claim audit and reviewer red-team be performed, followed by the final grant application and cover letter as the last project artifacts.
