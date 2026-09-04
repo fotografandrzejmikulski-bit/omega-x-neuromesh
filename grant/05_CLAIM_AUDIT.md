@@ -22,16 +22,26 @@ This document is the control layer for statements used in the application.
 5. Unsupported superlatives such as "first", "only", "best", "revolutionary", "enterprise-grade", or "100% secure" are excluded unless independently supportable within a defined scope.
 6. Statements about funding rules must be checked against the current official program source.
 
-## Current high-priority claims to verify before submission
+## Current high-priority claims — red-team status
 
 | Claim | Class | Required evidence | Status |
 |---|---|---|---|
-| Project uses Unreal Engine / Epic technology in the proposed workflow | FACT / SOURCE CLAIM | Project evidence + official product/program alignment | OPEN |
-| OMEGA-X governance model exists as a defined architecture | OBSERVATION / DESIGN | Versioned architecture document | OPEN |
-| NeuroMesh workflow can produce the proposed geometry result | HYPOTHESIS / MEASUREMENT | Prototype + benchmark | OPEN |
-| Prototype improves the baseline workflow | TARGET | Benchmark comparison | OPEN |
-| Security policy prevents defined unauthorized actions | TARGET / MEASUREMENT | Explicit adversarial tests | OPEN |
-| Requested grant amount is allowable | FACT | Current official program rules | OPEN |
+| Repository contains an Unreal Engine plugin and a minimal Unreal verification host | FACT | Versioned repository files | VERIFIED |
+| OMEGA-X governance model exists as a defined architecture | OBSERVATION / DESIGN | Versioned architecture and implementation docs | VERIFIED AS DESIGN; NOT PROOF OF RUNTIME VALIDATION |
+| OMEGA-X v0.1 policy is deterministic/default-deny with an explicit `Geometry.TransformActor` capability | FACT | Versioned policy implementation | VERIFIED IN SOURCE |
+| Geometry transform primitive performs policy checks and bounded safety validation before mutation | FACT | Versioned geometry implementation | VERIFIED IN SOURCE |
+| Geometry transform performs post-change read-back verification and contains a bounded recovery attempt | FACT | Versioned geometry implementation | VERIFIED IN SOURCE; RUNTIME RECOVERY NOT PROVEN |
+| Negative policy/geometry test cases are defined | FACT | Versioned test source | VERIFIED IN SOURCE; TEST EXECUTION NOT PROVEN |
+| NeuroMesh workflow can produce the proposed geometry result in Unreal Engine | HYPOTHESIS / MEASUREMENT | Built host + positive runtime test + benchmark | OPEN — NOT RUNTIME VERIFIED |
+| Prototype improves the baseline workflow | TARGET | Benchmark comparison | TARGET — NO RESULT CLAIM PERMITTED |
+| Security policy prevents defined unauthorized actions | TARGET / MEASUREMENT | Executed adversarial tests | TARGET — SOURCE CONTROLS EXIST; RUNTIME TEST RESULT UNKNOWN |
+| Requested grant amount is allowable and justified | FACT | Current official rules + applicant cost basis | OPEN |
+
+## Explicit reviewer limitations
+
+The repository evidence supports a **source-implemented vertical slice**, not a claim of a build-verified or runtime-validated Unreal demonstrator. The application must therefore use future-oriented language for runtime behavior, benchmarks, performance, recovery success, and end-to-end agent workflows until direct evidence exists.
+
+The v0.1 policy is capability-scoped but does not yet bind authorization to a specific target resource. This is a documented least-privilege limitation, not evidence of complete authorization coverage.
 
 ## Submission lock
 
