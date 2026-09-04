@@ -1,6 +1,6 @@
 # OMEGA-X / NeuroMesh — Final Epic MegaGrants Application Draft
 
-> **Status:** Narrative complete; applicant-specific facts, current demonstrator evidence, cost basis, and final eligibility checks remain explicit gates before submission.
+> **Status:** Narrative complete; applicant-specific facts, current runtime demonstrator evidence, cost basis, and final eligibility checks remain explicit gates before submission.
 
 ## Project title
 
@@ -8,7 +8,7 @@
 
 ## Short project description
 
-OMEGA-X / NeuroMesh is a proposed verification-first technical system combining governed AI execution, explicit security and authorization controls, auditable automation, and geometry-oriented workflows for Unreal Engine. The project is intentionally scoped as a development and validation program: the goal is to turn the current architecture and concept into a demonstrable, measurable prototype with reproducible evidence and clearly documented limitations.
+OMEGA-X / NeuroMesh is a proposed verification-first technical system combining governed AI execution, explicit security and authorization controls, auditable automation, and geometry-oriented workflows for Unreal Engine. The project is intentionally scoped as a development and validation program: the goal is to turn the current architecture and source-implemented vertical slice into a demonstrable, measurable prototype with reproducible evidence and clearly documented limitations.
 
 ## Problem
 
@@ -41,7 +41,9 @@ NeuroMesh provides the domain-oriented automation side of the system, while OMEG
 
 The project is designed around real-time 3D workflows rather than as a generic AI governance product. Unreal Engine is the target environment in which the geometry automation, project-state interactions, validation requirements, and demonstrator workflow are intended to be exercised.
 
-The funded work should therefore establish and demonstrate a concrete Unreal Engine integration point and benchmark the resulting workflow against an explicit baseline. The final application must identify the exact engine/API/editor/runtime integration used by the demonstrator and provide supporting evidence.
+The repository now contains a minimal OMEGA-X Unreal Engine plugin vertical slice and a minimal C++ verification host. These artifacts establish the intended integration surface at source level. They do **not** by themselves prove a successful Unreal Engine build, plugin load, runtime mutation, automation-test execution, or demonstrator result. Those remain validation gates for the funded development program.
+
+The final application must identify the exact engine/API/editor/runtime integration used by the demonstrator and provide supporting evidence.
 
 ## Technical differentiation
 
@@ -55,6 +57,8 @@ The project does not rely on a claim that AI alone solves automation reliability
 - deterministic automation is preferred where it is technically stronger;
 - rollback or transactional concepts are used where justified by the workflow; and
 - technical claims are separated from measurements and targets.
+
+The current v0.1 source implementation uses a deterministic/default-deny policy with one explicitly authorized capability, `Geometry.TransformActor`. The geometry primitive applies policy evaluation before mutation, performs bounded input/result validation, verifies the resulting location after mutation, and contains a bounded recovery attempt. Runtime verification of these behaviors remains outstanding.
 
 The project will not claim to be the first, only, revolutionary, universally secure, or 100% reliable solution without direct evidence supporting such a statement.
 
@@ -74,7 +78,7 @@ Create explicit baseline tasks and measure the prototype using reproducible test
 
 ### Objective 4 — Demonstrator and evidence package
 
-Produce a demonstrable Unreal Engine workflow and package the implementation, test results, documentation, limitations, and supporting evidence in a form suitable for external technical review.
+Produce a demonstrable Unreal Engine workflow and package the implementation, test results, limitations, and supporting evidence in a form suitable for external technical review.
 
 ## Work packages
 
@@ -229,9 +233,11 @@ The duration should be derived from the actual work-package schedule and availab
 
 ## Current project state
 
-The repository currently documents the project as being in the **Foundation / Architecture** phase. The grant application therefore positions the proposed work as development and validation of a demonstrable prototype rather than presenting the full system as already complete.
+The repository currently contains the **Foundation / Architecture** documentation plus a **source-implemented OMEGA-X Unreal Engine vertical slice and minimal C++ verification host**. The implementation includes deterministic/default-deny policy logic, the explicitly authorized `Geometry.TransformActor` capability, bounded geometry safety checks, post-change read-back verification, and a bounded recovery attempt.
 
-The final submission must replace any remaining generic description of current implementation state with verified project evidence.
+The current status is **IMPLEMENTATION PREPARED — NOT YET BUILD-VERIFIED**. The repository does not currently provide verified evidence of a successful Unreal Engine build, plugin loading, executed automation tests, positive runtime actor mutation, successful runtime recovery, measured performance, or an end-to-end agent workflow.
+
+The grant application therefore positions the proposed work as development and validation of a demonstrable prototype rather than presenting the full system as already complete.
 
 ## Technical credibility
 
@@ -264,7 +270,7 @@ Primary risks include:
 
 ## Why grant support matters
 
-Grant support would reduce the gap between the current architectural foundation and a properly validated technical demonstrator. The requested resources would be used for implementation, integration, testing, benchmarking, failure analysis, and evidence packaging that are difficult to justify solely through speculative development.
+Grant support would reduce the gap between the current architectural foundation/source-implemented vertical slice and a properly validated technical demonstrator. The requested resources would be used for implementation, integration, testing, benchmarking, failure analysis, and evidence packaging that are difficult to justify solely through speculative development.
 
 The grant would therefore fund a measurable development program rather than an abstract research narrative.
 
@@ -326,7 +332,7 @@ OMEGA-X / NeuroMesh is presented as a focused technical development and validati
 
 The project combines this governance layer with geometry-oriented automation so that the value can be demonstrated in a concrete real-time 3D context.
 
-The requested MegaGrants support should enable the project to move from architectural foundation to evidence-backed demonstrator, with success defined by working software, measurable results, reproducibility, and transparent limitations.
+The requested MegaGrants support should enable the project to move from its current source-implemented vertical slice to an evidence-backed demonstrator, with success defined by working software, measurable results, reproducibility, and transparent limitations.
 
 ---
 
@@ -335,8 +341,8 @@ The requested MegaGrants support should enable the project to move from architec
 **Do not submit this document unchanged.** Before submission, close all factual gates below:
 
 - [ ] exact Unreal Engine integration verified;
-- [ ] current demonstrator verified;
-- [ ] current implementation status verified;
+- [ ] current runtime demonstrator verified;
+- [x] current source implementation status synchronized;
 - [ ] grant-funded work packages fixed;
 - [ ] duration fixed;
 - [ ] actual cost basis calculated;
@@ -346,7 +352,7 @@ The requested MegaGrants support should enable the project to move from architec
 - [ ] prior and other funding disclosed accurately;
 - [ ] material technical claims evidenced;
 - [ ] repository and supporting links verified;
-- [ ] final claim audit completed;
-- [ ] reviewer red-team completed;
+- [x] claim audit updated to source-evidence boundaries;
+- [x] reviewer red-team executed against current project state;
 - [ ] official Epic MegaGrants page rechecked immediately before submission;
-- [ ] final human review completed.
+- [ ] final human review completed;
