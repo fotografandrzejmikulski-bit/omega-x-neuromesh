@@ -9,7 +9,8 @@
 | Module | Build.cs + module implementation present | PASS — source verified |
 | Policy | Deterministic default-deny policy present | PASS — source verified |
 | Authorization | Explicit `Geometry.TransformActor` allow path present | PASS — source verified |
-| Geometry primitive | Controlled Actor translation + verification present | PASS — source verified |
+| Geometry primitive | Controlled Actor translation + policy enforcement + post-change verification present | PASS — source verified |
+| Geometry safety | NaN rejection + bounded translation enforced before mutation | PASS — source verified |
 | Negative geometry test | Null-target rejection test present | PASS — source verified |
 | Unreal build | Successful real UBT compilation | BLOCKED — environment/evidence required |
 | Unreal automation | Tests executed and passing | BLOCKED — environment/evidence required |
@@ -24,6 +25,6 @@
 
 The prototype now has a minimal source-level vertical slice:
 
-`POLICY → AUTHORIZATION → CONTROLLED GEOMETRY PRIMITIVE → POST-CHANGE VERIFICATION`
+`POLICY → AUTHORIZATION → SAFETY VALIDATION → CONTROLLED GEOMETRY PRIMITIVE → POST-CHANGE VERIFICATION`
 
 The next work item is verification, not feature expansion. No performance, security, runtime, or Unreal compatibility claim is promoted beyond the evidence available in the repository.
