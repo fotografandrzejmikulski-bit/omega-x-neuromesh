@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#0b0d10"/>
+  <text x="90" y="105" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700">OMEGA-X / NeuroMesh</text>
+  <text x="90" y="155" fill="#b8c0cc" font-family="Arial, Helvetica, sans-serif" font-size="28">Governed AI and Geometry Automation for Real-Time 3D Workflows</text>
+
+  <g font-family="Arial, Helvetica, sans-serif">
+    <rect x="90" y="235" width="260" height="120" rx="18" fill="#171b21" stroke="#667085" stroke-width="2"/>
+    <text x="220" y="285" text-anchor="middle" fill="#ffffff" font-size="25" font-weight="700">AGENT PROPOSES</text>
+    <text x="220" y="320" text-anchor="middle" fill="#aab2bf" font-size="19">AI-assisted proposal</text>
+
+    <rect x="410" y="235" width="260" height="120" rx="18" fill="#171b21" stroke="#667085" stroke-width="2"/>
+    <text x="540" y="285" text-anchor="middle" fill="#ffffff" font-size="25" font-weight="700">POLICY</text>
+    <text x="540" y="320" text-anchor="middle" fill="#aab2bf" font-size="19">Authorization boundary</text>
+
+    <rect x="730" y="235" width="260" height="120" rx="18" fill="#171b21" stroke="#667085" stroke-width="2"/>
+    <text x="860" y="285" text-anchor="middle" fill="#ffffff" font-size="25" font-weight="700">SAFETY GATE</text>
+    <text x="860" y="320" text-anchor="middle" fill="#aab2bf" font-size="19">Validation before mutation</text>
+
+    <rect x="1050" y="235" width="260" height="120" rx="18" fill="#171b21" stroke="#667085" stroke-width="2"/>
+    <text x="1180" y="285" text-anchor="middle" fill="#ffffff" font-size="25" font-weight="700">EXECUTION</text>
+    <text x="1180" y="320" text-anchor="middle" fill="#aab2bf" font-size="19">Controlled UE workflow</text>
+
+    <path d="M350 295 H410 M670 295 H730 M990 295 H1050" stroke="#8b95a5" stroke-width="5"/>
+    <path d="M395 285 l15 10 -15 10 M715 285 l15 10 -15 10 M1035 285 l15 10 -15 10" fill="#8b95a5"/>
+
+    <rect x="250" y="485" width="450" height="185" rx="22" fill="#12161b" stroke="#667085" stroke-width="2"/>
+    <text x="475" y="535" text-anchor="middle" fill="#ffffff" font-size="30" font-weight="700">OMEGA-X</text>
+    <text x="475" y="580" text-anchor="middle" fill="#b8c0cc" font-size="21">Governance • Authorization</text>
+    <text x="475" y="615" text-anchor="middle" fill="#b8c0cc" font-size="21">Safety • Verification • Audit</text>
+
+    <rect x="900" y="485" width="450" height="185" rx="22" fill="#12161b" stroke="#667085" stroke-width="2"/>
+    <text x="1125" y="535" text-anchor="middle" fill="#ffffff" font-size="30" font-weight="700">NeuroMesh</text>
+    <text x="1125" y="580" text-anchor="middle" fill="#b8c0cc" font-size="21">Geometry-oriented automation</text>
+    <text x="1125" y="615" text-anchor="middle" fill="#b8c0cc" font-size="21">Deterministic baselines • Measurement</text>
+
+    <rect x="450" y="750" width="700" height="70" rx="18" fill="#171b21" stroke="#667085" stroke-width="2"/>
+    <text x="800" y="795" text-anchor="middle" fill="#ffffff" font-size="25" font-weight="700">VERIFY → AUDIT → MEASURE → DOCUMENT</text>
+
+    <text x="800" y="860" text-anchor="middle" fill="#7f8998" font-size="18">Source-implemented vertical slice; runtime validation is a grant-funded objective.</text>
+  </g>
+</svg>
