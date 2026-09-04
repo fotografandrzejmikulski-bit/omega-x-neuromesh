@@ -2,6 +2,16 @@
 
 namespace OmegaX
 {
+    namespace
+    {
+        bool IsExplicitlyAuthorizedCapability(const FString& Capability)
+        {
+            // v0.1 exposes one deliberately narrow capability for the first
+            // controlled Unreal Engine workflow. Everything else is denied.
+            return Capability.Equals(TEXT("Geometry.TransformActor"), ESearchCase::CaseSensitive);
+        }
+    }
+
     FPolicyDecision FPolicy::Evaluate(const FPolicyRequest& Request)
     {
         if (Request.Capability.IsEmpty())
@@ -19,7 +29,11 @@ namespace OmegaX
             return { EDecision::Deny, TEXT("Explicit approval is required") };
         }
 
-        // v0.1 intentionally exposes no implicit capabilities.
-        return { EDecision::Deny, TEXT("Capability is not explicitly authorized") };
+        if (!IsExplicitlyAuthorizedCapability(Request.Capability))
+        {
+            return { EDecision::Deny, TEXT("Capability is not explicitly authorized") };
+        }
+
+        return { EDecision::Allow, TEXT("Capability is explicitly authorized") };
     }
 }
