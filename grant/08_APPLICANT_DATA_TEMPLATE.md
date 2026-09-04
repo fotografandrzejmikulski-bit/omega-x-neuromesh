@@ -4,7 +4,7 @@ This file contains only fields that must be completed from the applicant's real 
 
 | Field | Value | Status |
 |---|---|---|
-| Applicant / legal name | TBD — must match the official submission identity | REQUIRED / OPEN |
+| Applicant / legal name | Andrzej Mikulski | CONFIRMED BY APPLICANT |
 | Individual / company / organization | Individual / natural person | CONFIRMED BY APPLICANT |
 | Country | Poland | CONFIRMED BY APPLICANT |
 | Contact email | mojealterego21@gmail.com | CONFIRMED BY APPLICANT |
