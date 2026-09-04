@@ -13,7 +13,7 @@ It is deliberately evidence-first. Documentation describing a proposed system is
 
 ## 2. Current repository finding
 
-The repository now contains a minimal Unreal Engine plugin implementation under `Plugins/OmegaX/`, including:
+The repository now contains a minimal Unreal Engine plugin vertical slice under `Plugins/OmegaX/`, including:
 
 - `OmegaX.uplugin`
 - `Source/OmegaX/OmegaX.Build.cs`
@@ -21,6 +21,9 @@ The repository now contains a minimal Unreal Engine plugin implementation under 
 - `Source/OmegaX/Public/OmegaXPolicy.h`
 - `Source/OmegaX/Private/OmegaXPolicy.cpp`
 - `Source/OmegaX/Private/OmegaXPolicyTests.cpp`
+- `Source/OmegaX/Public/OmegaXGeometry.h`
+- `Source/OmegaX/Private/OmegaXGeometry.cpp`
+- `Source/OmegaX/Private/OmegaXGeometryTests.cpp`
 
 The repository also contains `docs/UE_BUILD_VERIFICATION.md`, which defines the evidence protocol for engine-level verification.
 
@@ -28,44 +31,45 @@ The repository also contains `docs/UE_BUILD_VERIFICATION.md`, which defines the 
 
 **Status: SOURCE IMPLEMENTATION PRESENT / BUILD NOT VERIFIED**
 
-The repository demonstrates an actual Unreal plugin source skeleton and a deterministic policy primitive. This is stronger evidence than a specification-only repository, but it does not establish successful compilation or runtime operation.
+The repository demonstrates an actual Unreal plugin source vertical slice containing deterministic policy evaluation and a controlled geometry mutation primitive. This is stronger evidence than a specification-only repository, but it does not establish successful compilation or runtime operation.
 
-The current policy primitive is intentionally conservative: unknown capabilities are denied by default, and requests with missing capability/actor data or approval requirements are denied. A positive allow-path has not yet been introduced because the first gate is build verification of the minimal security primitive.
+The policy primitive is intentionally conservative: unknown capabilities are denied by default, and requests with missing capability/actor data or approval requirements are denied. The only explicitly authorized v0.1 capability is `Geometry.TransformActor`.
+
+The geometry operation now enforces policy internally before mutation and applies source-level safety validation, including NaN rejection and a 1000 Unreal Unit translation-magnitude limit.
 
 ## 4. Unreal Engine integration status
 
 **Status: NOT YET PROVEN**
 
-The plugin structure follows Unreal's documented module model, including a `.uplugin`, `Build.cs`, `Private`/`Public` source structure, and a module implementation. Epic's documentation states that Unreal modules require these build/module components and are discovered by Unreal Build Tool. This repository has not yet captured direct UBT compilation or runtime evidence.
+The plugin structure follows Unreal's documented module model, including a `.uplugin`, `Build.cs`, `Private`/`Public` source structure, and a module implementation. Epic's documentation states that Unreal modules require these build/module components and that Unreal Build Tool uses module build rules as the build-system source of truth. This repository has not yet captured direct UBT compilation or runtime evidence.
 
 Therefore the following remain unverified:
 
 - successful compilation;
 - successful plugin loading;
-- execution of the automation test;
+- execution of the automation tests;
 - working policy behavior inside a running Unreal project;
-- working geometry-processing workflow inside Unreal Engine;
+- successful positive geometry mutation inside Unreal Engine;
+- post-change verification in a running engine;
 - functioning demonstrator;
 - measured Unreal Engine performance or quality results.
 
 ## 5. Test status
 
-A negative-path Unreal automation test is present at:
+Source-level Unreal automation tests are present for policy and geometry negative cases.
 
-`Plugins/OmegaX/Source/OmegaX/Private/OmegaXPolicyTests.cpp`
+The geometry test definitions cover:
 
-The test covers:
+1. policy denial before target access;
+2. null target rejection;
+3. excessive translation rejection;
+4. NaN translation rejection.
 
-1. missing capability → denied;
-2. missing actor → denied;
-3. approval-required request before approval → denied;
-4. unknown capability → denied by default.
-
-**Execution status: UNKNOWN.** The test definition must not be reported as a passed test until Unreal Engine execution output is captured.
+**Execution status: UNKNOWN.** A test definition is not reported as a passed test until Unreal Engine execution output is captured.
 
 ## 6. Consequence for the MegaGrants submission
 
-The project may now truthfully state that a minimal Unreal plugin implementation has been started and that the repository contains source-level policy and negative-test artifacts. It must still be positioned as a development-and-validation project rather than a completed Unreal Engine product.
+The project may now truthfully state that a minimal Unreal plugin vertical slice has been implemented at source level and that the repository contains source-level policy, authorization, geometry, safety, and negative-test artifacts. It must still be positioned as a development-and-validation project rather than a completed Unreal Engine product.
 
 No numerical performance result, runtime success, demonstrator completion, or security guarantee may be presented as achieved without direct evidence.
 
@@ -75,13 +79,15 @@ No numerical performance result, runtime success, demonstrator completion, or se
 2. valid host project or equivalent test environment;
 3. successful UBT compilation;
 4. successful plugin load;
-5. executed automation-test result;
-6. failure/recovery evidence;
-7. minimal demonstrator workflow;
-8. baseline and measured benchmark results;
-9. evidence links/media permitted by the application;
-10. factual applicant/eligibility data;
-11. defensible project cost and funding request.
+5. executed policy and geometry automation-test results;
+6. positive `Geometry.TransformActor` execution against a real Actor;
+7. post-change verification evidence;
+8. failure/recovery evidence;
+9. minimal demonstrator workflow;
+10. baseline and measured benchmark results;
+11. evidence links/media permitted by the application;
+12. factual applicant/eligibility data;
+13. defensible project cost and funding request.
 
 ## 8. Audit result
 
@@ -95,10 +101,14 @@ No numerical performance result, runtime success, demonstrator completion, or se
 | Unreal `Build.cs` present | VERIFIED |
 | Unreal module implementation present | VERIFIED |
 | Unreal policy source present | VERIFIED |
-| Unreal negative-test definition present | VERIFIED |
+| Unreal geometry source present | VERIFIED |
+| Unreal negative-test definitions present | VERIFIED |
+| Policy enforcement inside geometry operation | VERIFIED IN SOURCE |
+| Geometry safety validation in source | VERIFIED IN SOURCE |
 | Unreal compilation | UNKNOWN |
 | Plugin load | UNKNOWN |
 | Automation test execution | UNKNOWN |
+| Positive geometry execution | UNKNOWN |
 | Runtime implementation proven | NO |
 | Unreal integration proven | NO |
 | Demonstrator proven | NO |
