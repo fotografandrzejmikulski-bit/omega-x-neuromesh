@@ -10,7 +10,7 @@
 | Baseline and KPI methodology | KPI validation plan | Project | VERIFIED — methodology defined; results unavailable and correctly positioned as future validation | YES |
 | Budget and requested amount | Budget framework + current program rules | Application | PARTIAL — €28,800 labor planning envelope; final request pending allowable-cost/form verification | YES |
 | Evidence for technical claims | Claim/evidence registers + source implementation | Project | VERIFIED AT SOURCE LEVEL — runtime measurements remain unavailable and are not claimed as results | YES |
-| Applicant identity/contact data | Applicant data template | Applicant | PARTIAL — type, country, email, solo status and funding disclosures confirmed; legal/form identity remains applicant-controlled | YES |
+| Applicant identity/contact data | Applicant data template | Applicant | UPDATED — applicant/legal name confirmed as Andrzej Mikulski; type, country, email, solo status and funding disclosures confirmed; remaining form-specific identity/account fields still open | YES |
 | Previous/other funding disclosures | Applicant confirmation | Applicant | VERIFIED — previous MegaGrant: No; other project funding: No | NO |
 | Demo / supporting material | Actual project artifacts | Project | PARTIAL — source artifacts present; runtime demonstrator remains a grant-funded objective | YES |
 | Final claim audit | Claim audit | Project | UPDATED — unsupported runtime/result claims locked as targets/unknown | YES |
@@ -25,6 +25,7 @@ The following are **not** currently established by direct runtime evidence: succ
 
 ## Confirmed applicant inputs
 
+- Applicant / legal name: Andrzej Mikulski
 - Applicant type: Individual / natural person
 - Country: Poland
 - Contact email: mojealterego21@gmail.com
