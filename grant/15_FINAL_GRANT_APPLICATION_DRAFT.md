@@ -1,6 +1,6 @@
 # OMEGA-X / NeuroMesh — Final Epic MegaGrants Application Draft
 
-> **Status:** Narrative complete; applicant-specific facts, current runtime demonstrator evidence, cost basis, and final eligibility checks remain explicit gates before submission.
+> **Status:** Narrative complete; final runtime evidence, exact eligibility/form checks, and final submission review remain explicit gates before submission.
 
 ## Project title
 
@@ -41,7 +41,7 @@ NeuroMesh provides the domain-oriented automation side of the system, while OMEG
 
 The project is designed around real-time 3D workflows rather than as a generic AI governance product. Unreal Engine is the target environment in which the geometry automation, project-state interactions, validation requirements, and demonstrator workflow are intended to be exercised.
 
-The repository now contains a minimal OMEGA-X Unreal Engine plugin vertical slice and a minimal C++ verification host. These artifacts establish the intended integration surface at source level. They do **not** by themselves prove a successful Unreal Engine build, plugin load, runtime mutation, automation-test execution, or demonstrator result. Those remain validation gates for the funded development program.
+The repository contains a minimal OMEGA-X Unreal Engine plugin vertical slice and a minimal C++ verification host. These artifacts establish the intended integration surface at source level. They do **not** by themselves prove a successful Unreal Engine build, plugin load, runtime mutation, automation-test execution, or demonstrator result. Those remain validation gates for the funded development program.
 
 The final application must identify the exact engine/API/editor/runtime integration used by the demonstrator and provide supporting evidence.
 
@@ -101,7 +101,8 @@ Produce a demonstrable Unreal Engine workflow and package the implementation, te
 - implement the minimum required governance controls;
 - integrate the workflow with the selected Unreal Engine interface;
 - implement validation and logging required for the demonstrator;
-- add controlled state mutation and recovery mechanisms where justified.
+- add controlled state mutation and recovery mechanisms where justified;
+- obtain or provision a suitable Unreal Engine development environment.
 
 **Deliverable:** runnable constrained prototype.
 
@@ -215,21 +216,29 @@ A capability is expanded only after the preceding capability has sufficient evid
 
 ## Budget principle
 
-The budget will be constructed from the actual defensible cost of the grant-funded work packages, not from a presumed maximum award.
+The current internal planning envelope uses a **€30/hour** development rate and a six-month full-time planning envelope of **960 hours**, producing a labor envelope of **€28,800**. This is an internal planning estimate, not a claim about a market rate or a verified invoice rate.
+
+Current scenarios are:
+
+- **MVP:** 480 hours / €14,400;
+- **REDUCED:** 720 hours / €21,600;
+- **FULL:** 960 hours / €28,800.
+
+The preferred planning scenario is FULL because the current technical state still requires the transition from source implementation to Unreal Engine build/runtime verification, validation, benchmarking, and demonstrator evidence.
+
+No hardware, software, cloud, rental, compute, or dissemination cost is included without a concrete requirement, current price or quote where applicable, and confirmation that the expense is allowable under the current program rules. The applicant currently has no Unreal Engine build environment, so an appropriate development environment may become a necessary project cost; it remains unpriced and is not included in the €28,800 labor envelope at this stage.
 
 Each requested cost must map to:
 
 **COST → WORK PACKAGE → DELIVERABLE → KPI → IMPACT**
 
-The final requested amount must be calculated only after the actual project duration, personnel/resource requirements, eligible cost categories, and current Epic MegaGrants rules are verified.
-
-No unsupported grant maximum or invented cost figure should appear in the final submission.
+The final requested amount must be the smallest defensible amount that supports the committed scope after the actual cost basis and current Epic MegaGrants rules are verified.
 
 ## Project duration
 
-**Final duration: [APPLICANT INPUT REQUIRED]**
+**Planning duration: 6 months**, with an explicit objective to complete earlier if resources permit without reducing validation quality.
 
-The duration should be derived from the actual work-package schedule and available development capacity rather than selected solely to maximize the request.
+The six-month period is a planning envelope rather than a claim that six months will necessarily be required.
 
 ## Current project state
 
@@ -291,18 +300,24 @@ At completion, the project aims to provide:
 
 ## Applicant information
 
-The following fields must be completed from verified applicant information:
+The following applicant facts have been confirmed and should be carried into the final form where applicable:
 
-- **Applicant name:** Andrzej Mikulski
-- **Legal entity / individual status:** [APPLICANT INPUT REQUIRED]
-- **Country:** [APPLICANT INPUT REQUIRED]
-- **Contact email:** [APPLICANT INPUT REQUIRED]
-- **Website / portfolio:** [APPLICANT INPUT REQUIRED]
-- **Project/repository URL:** [VERIFY BEFORE SUBMISSION]
-- **Team members:** [APPLICANT INPUT REQUIRED]
+- **Applicant type:** Individual / natural person
+- **Country:** Poland
+- **Contact email:** mojealterego21@gmail.com
+- **Working model:** Solo developer
+- **Previous Epic MegaGrant funding:** No
+- **Other funding for this project:** No
+- **Project/repository URL:** https://github.com/fotografandrzejmikulski-bit/omega-x-neuromesh
+
+The following remain form-dependent or require direct applicant/legal confirmation:
+
+- **Legal name / identity format:** [VERIFY AGAINST OFFICIAL FORM]
+- **Website / portfolio:** [ONLY IF REQUIRED OR IF A DISTINCT FIELD EXISTS]
+- **Unreal/Epic account context:** [VERIFY IF REQUIRED]
+- **Team members:** [SOLO; ADD ONLY IF FORM REQUIRES FUTURE/CONTRIBUTING PERSONNEL DISCLOSURE]
 - **Relevant prior work:** [APPLICANT INPUT REQUIRED]
-- **Previous Epic/Epic MegaGrants funding:** [APPLICANT INPUT REQUIRED]
-- **Other funding for this project:** [APPLICANT INPUT REQUIRED]
+- **Tax/payment details:** [ONLY IF REQUESTED BY EPIC]
 
 ## Supporting evidence
 
@@ -343,15 +358,17 @@ The requested MegaGrants support should enable the project to move from its curr
 - [ ] exact Unreal Engine integration verified;
 - [ ] current runtime demonstrator verified;
 - [x] current source implementation status synchronized;
-- [ ] grant-funded work packages fixed;
-- [ ] duration fixed;
-- [ ] actual cost basis calculated;
+- [x] grant-funded work packages fixed;
+- [x] planning duration fixed at 6 months;
+- [x] labor planning envelope calculated at €28,800;
+- [ ] final non-labor cost basis calculated or explicitly excluded;
 - [ ] requested amount calculated from defensible cost and current program rules;
 - [ ] applicant eligibility verified;
-- [ ] legal/applicant data verified;
-- [ ] prior and other funding disclosed accurately;
+- [ ] legal/applicant identity format verified against official form;
+- [x] prior Epic MegaGrant disclosure confirmed: No;
+- [x] other project funding disclosure confirmed: No;
 - [ ] material technical claims evidenced;
-- [ ] repository and supporting links verified;
+- [x] repository URL verified in project records;
 - [x] claim audit updated to source-evidence boundaries;
 - [x] reviewer red-team executed against current project state;
 - [ ] official Epic MegaGrants page rechecked immediately before submission;
