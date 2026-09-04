@@ -8,11 +8,11 @@
 | Concrete project scope | Project plan + prototype status | Project | VERIFIED — bounded WP1–WP4 scope | NO |
 | Milestones and deliverables | Project plan | Project | VERIFIED — M1–M4 defined | NO |
 | Baseline and KPI methodology | KPI validation plan | Project | VERIFIED — methodology defined; results unavailable and correctly positioned as future validation | YES |
-| Budget and requested amount | Budget framework + current program rules | Application | PARTIAL — €28,800 labor planning envelope; final request pending allowable-cost/form verification | YES |
+| Budget and requested amount | Budget framework + current program rules | Application | PARTIAL — €28,800 labor planning envelope; current mid-market conversion is approximately $33,479, but final portal funding range/request must follow the live form and allowable-cost basis | YES |
 | Evidence for technical claims | Claim/evidence registers + source implementation | Project | VERIFIED AT SOURCE LEVEL — runtime measurements remain unavailable and are not claimed as results | YES |
-| Applicant identity/contact data | Applicant data template | Applicant | UPDATED — applicant/legal name confirmed as Andrzej Mikulski; type, country, email, solo status and funding disclosures confirmed; remaining form-specific identity/account fields still open | YES |
+| Applicant identity/contact data | Applicant data template | Applicant | UPDATED — legal name, type, country, email, phone, relevant social media, solo status and funding disclosures confirmed; remaining form-specific identity/account fields still open | YES |
 | Previous/other funding disclosures | Applicant confirmation | Applicant | VERIFIED — previous MegaGrant: No; other project funding: No | NO |
-| Demo / supporting material | Actual project artifacts | Project | PARTIAL — source artifacts present; runtime demonstrator remains a grant-funded objective | YES |
+| Demo / supporting material | Actual project artifacts | Project | PARTIAL — source artifacts and a static project overview visual are present; runtime demonstrator remains a grant-funded objective | YES |
 | Final claim audit | Claim audit | Project | UPDATED — unsupported runtime/result claims locked as targets/unknown | YES |
 | Reviewer red-team | Reviewer objections | Project | EXECUTED — remaining evidence/form gaps documented | YES |
 | Final dossier status | `14_FINAL_DOSSIER_STATUS.md` | Project/Application | ACTIVE CONTROL POINT | YES |
@@ -29,16 +29,22 @@ The following are **not** currently established by direct runtime evidence: succ
 - Applicant type: Individual / natural person
 - Country: Poland
 - Contact email: mojealterego21@gmail.com
+- Phone number: +48 455 575 337
+- Relevant social media: https://www.viewbug.com/member/andrzejM
 - Working model: Solo developer
 - Previous Epic MegaGrant funding: No
 - Other funding for this project: No
 - Planning duration: 6 months, with an objective to finish earlier if resources permit without reducing validation quality
 - Unreal Engine build environment currently available: No
-- Primary project/technical link: repository URL recorded in `grant/08_APPLICANT_DATA.md`
+- Primary project/technical link: repository URL recorded in `grant/08_APPLICANT_DATA_TEMPLATE.md`
+
+## Supporting media
+
+A static project-overview SVG has been added to the repository. It describes the proposed control/execution architecture and explicitly states that runtime validation is a grant-funded objective. It must not be represented as a runtime demonstrator or benchmark.
 
 ## Budget position
 
-The current preferred planning scenario is FULL: 960 hours × €30/hour = €28,800 labor envelope. MVP and REDUCED scenarios remain €14,400 and €21,600 respectively. No unverified non-labor cost has been added.
+The current preferred planning scenario is FULL: 960 hours × €30/hour = €28,800 labor envelope. MVP and REDUCED scenarios remain €14,400 and €21,600 respectively. On 2026-09-04, a mid-market reference rate of approximately €1 = $1.16245 gives €28,800 ≈ $33,479. This conversion is a planning reference only; the live Epic funding field and allowable-cost rules control the final submission value/range.
 
 The final requested amount must remain the smallest defensible amount supporting the committed scope after current program rules, allowable costs, and any necessary development-environment cost are verified.
 
@@ -48,7 +54,7 @@ A blocking item may not be marked complete without supporting evidence or explic
 
 ## Current timing
 
-The official Epic MegaGrants program page was rechecked on 2026-09-04. Epic's current Cycle 2 schedule lists submissions from June 29 through September 4, 2026, with the English/Japan-facing schedule specifying 11:59 PM ET and localized European pages showing the corresponding Central European deadline as September 5, 2026 at 05:59 CEST. citeturn0search0turn0search3turn0search4
+The official Epic MegaGrants program page was rechecked on 2026-09-04. Epic's current Cycle 2 schedule lists submissions from June 29 through September 4, 2026, with the English-facing schedule specifying 11:59 PM ET and localized European pages showing the corresponding Central European deadline as September 5, 2026 at 05:59 CEST. citeturn0search0turn0search2
 
 ## Completion rule
 
