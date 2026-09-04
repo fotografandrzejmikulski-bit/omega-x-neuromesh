@@ -56,6 +56,6 @@ bool FOmegaXGeometrySafetyBoundTest::RunTest(const FString& Parameters)
     const OmegaX::FGeometryTransformResult Result = OmegaX::FGeometryTransform::Apply(Request);
 
     TestFalse(TEXT("Excessive translation is not applied"), Result.bApplied);
-    TestEqual(TEXT("Safety bound is enforced"), Result.Reason, FString(TEXT("Target actor is required")));
+    TestEqual(TEXT("Safety bound is enforced"), Result.Reason, FString(TEXT("Translation exceeds safety limit")));
     return true;
 }
