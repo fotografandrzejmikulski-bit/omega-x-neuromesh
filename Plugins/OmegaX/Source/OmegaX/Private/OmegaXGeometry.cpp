@@ -16,12 +16,17 @@ namespace OmegaX
             return { false, FVector::ZeroVector, FVector::ZeroVector, TEXT("Translation contains NaN") };
         }
 
+        if (!Request.Translation.IsFinite())
+        {
+            return { false, FVector::ZeroVector, FVector::ZeroVector, TEXT("Translation contains non-finite values") };
+        }
+
         if (Request.Translation.SizeSquared() > FMath::Square(MaxTranslationMagnitude))
         {
             return { false, FVector::ZeroVector, FVector::ZeroVector, TEXT("Translation exceeds safety limit") };
         }
 
-        if (Request.Target == nullptr)
+        if (!IsValid(Request.Target))
         {
             return { false, FVector::ZeroVector, FVector::ZeroVector, TEXT("Target actor is required") };
         }
@@ -29,16 +34,34 @@ namespace OmegaX
         const FVector PreviousLocation = Request.Target->GetActorLocation();
         const FVector NewLocation = PreviousLocation + Request.Translation;
 
+        if (!NewLocation.IsFinite())
+        {
+            return { false, PreviousLocation, PreviousLocation, TEXT("Resulting actor location is non-finite") };
+        }
+
         Request.Target->SetActorLocation(NewLocation, false, nullptr, ETeleportType::None);
 
         const FVector VerifiedLocation = Request.Target->GetActorLocation();
         const bool bApplied = VerifiedLocation.Equals(NewLocation, KINDA_SMALL_NUMBER);
 
+        if (!bApplied)
+        {
+            Request.Target->SetActorLocation(PreviousLocation, false, nullptr, ETeleportType::None);
+            const FVector RecoveryLocation = Request.Target->GetActorLocation();
+
+            return {
+                false,
+                PreviousLocation,
+                RecoveryLocation,
+                TEXT("Post-change verification failed; recovery attempted")
+            };
+        }
+
         return {
-            bApplied,
+            true,
             PreviousLocation,
             VerifiedLocation,
-            bApplied ? TEXT("Geometry transform applied and verified") : TEXT("Post-change verification failed")
+            TEXT("Geometry transform applied and verified")
         };
     }
 }
