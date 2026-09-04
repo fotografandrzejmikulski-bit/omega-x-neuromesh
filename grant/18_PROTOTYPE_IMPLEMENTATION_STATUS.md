@@ -1,11 +1,11 @@
 # OMEGA-X / NeuroMesh — Prototype Implementation Status
 
-**Status:** IMPLEMENTATION STARTED — NOT YET BUILD-VERIFIED
+**Status:** IMPLEMENTATION PREPARED — NOT YET BUILD-VERIFIED
 **Date:** 2026-09-04
 
 ## 1. Verified repository change
 
-The repository contains the first concrete Unreal Engine plugin vertical slice:
+The repository contains the first concrete Unreal Engine plugin vertical slice and a minimal C++ verification host:
 
 - `Plugins/OmegaX/OmegaX.uplugin`
 - `Plugins/OmegaX/Source/OmegaX/OmegaX.Build.cs`
@@ -16,8 +16,13 @@ The repository contains the first concrete Unreal Engine plugin vertical slice:
 - `Plugins/OmegaX/Source/OmegaX/Public/OmegaXGeometry.h`
 - `Plugins/OmegaX/Source/OmegaX/Private/OmegaXGeometry.cpp`
 - `Plugins/OmegaX/Source/OmegaX/Private/OmegaXGeometryTests.cpp`
+- `OmegaXVerification/OmegaXVerification.uproject`
+- `OmegaXVerification/Source/OmegaXVerification/OmegaXVerification.Build.cs`
+- `OmegaXVerification/Source/OmegaXVerification/Private/OmegaXVerificationModule.cpp`
+- `OmegaXVerification/Source/OmegaXVerification.Target.cs`
+- `OmegaXVerification/Source/OmegaXVerificationEditor.Target.cs`
 
-The module declares `Core`, `CoreUObject`, and `Engine` dependencies required by the geometry implementation.
+The plugin module declares `Core`, `CoreUObject`, and `Engine` dependencies required by the geometry implementation. The verification host enables the plugin and declares `OmegaX` as a module dependency.
 
 ## 2. Implemented behavior
 
@@ -26,7 +31,7 @@ The v0.1 policy gate is deliberately deterministic and default-deny.
 A request is denied when:
 
 1. the capability is missing;
-2. the actor identity/context is missing;
+2. the requester identity/context is missing;
 3. explicit approval is required but no trusted approval mechanism exists;
 4. the capability is not explicitly authorized.
 
@@ -62,6 +67,7 @@ The recovery path is source-implemented but not runtime-proven. This remains a c
 | Recovery attempt exists in source | VERIFIED FACT | PASS |
 | Negative-case tests are defined | VERIFIED FACT | PASS |
 | Positive authorization path is defined in source | VERIFIED FACT | PASS |
+| Minimal Unreal verification host exists | VERIFIED FACT | PASS |
 | Plugin compiles in a real Unreal Engine environment | MEASUREMENT | UNKNOWN |
 | Automation tests pass in Unreal Engine | MEASUREMENT | UNKNOWN |
 | Positive Actor mutation executes in Unreal Engine | MEASUREMENT | UNKNOWN |
@@ -71,16 +77,16 @@ The recovery path is source-implemented but not runtime-proven. This remains a c
 
 ## 4. Required next verification
 
-The next technical gate is a real Unreal Engine build/test environment. Until that exists, the source implementation must not be described as build-verified or runtime-verified.
+The repository now contains the minimum host-project structure required to attempt the real Unreal Engine build/test gate. The remaining blocker is execution in an actual Unreal Engine installation.
 
 Required evidence:
 
-- Unreal Engine version;
+- exact Unreal Engine version;
 - host platform and compiler/toolchain;
 - successful plugin compilation;
 - successful automation-test execution;
 - captured test output;
-- minimal Unreal project demonstrating plugin loading;
+- plugin load confirmation;
 - denied-request evidence;
 - positive-case evidence that `Geometry.TransformActor` is authorized by the policy gate;
 - positive geometry execution and post-change verification evidence;
@@ -89,4 +95,4 @@ Required evidence:
 
 ## 5. Scope rule
 
-Do not expand the prototype into a broad agent platform before this minimal security/geometry primitive is build-verified. The next implementation increment should add only the smallest verification harness required to demonstrate the controlled Unreal workflow and its measurable validation.
+Do not expand the prototype into a broad agent platform before this minimal security/geometry primitive is build-verified. The verification host added here is the final infrastructure increment needed to make that gate executable; subsequent work should be evidence capture, defect correction, claim audit, reviewer red-team, and submission finalization rather than unrelated product expansion.
