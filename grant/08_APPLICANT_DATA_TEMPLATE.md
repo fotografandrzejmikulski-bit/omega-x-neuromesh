@@ -8,6 +8,8 @@ This file contains only fields that must be completed from the applicant's real 
 | Individual / company / organization | Individual / natural person | CONFIRMED BY APPLICANT |
 | Country | Poland | CONFIRMED BY APPLICANT |
 | Contact email | mojealterego21@gmail.com | CONFIRMED BY APPLICANT |
+| Phone number | +48 455 575 337 | CONFIRMED BY APPLICANT |
+| Relevant social media | https://www.viewbug.com/member/andrzejM | CONFIRMED BY APPLICANT |
 | Website / portfolio | TBD; use only if the official form provides a distinct field | OPTIONAL / OPEN |
 | Unreal Engine / Epic account context | TBD — must be verified against the applicant's actual account/form context | REQUIRED / OPEN |
 | Current project status | Source-implemented Unreal Engine plugin vertical slice; runtime validation not yet verified | VERIFIED AGAINST REPOSITORY + CURRENT AUDIT |
