@@ -2,26 +2,26 @@
 
 | Requirement | Source | Owner | Status | Blocking? |
 |---|---|---|---|---|
-| Current MegaGrants cycle/deadline | Official Epic MegaGrants page | Application | VERIFIED — recheck immediately before submission | YES |
-| Applicant eligibility | Official Epic FAQ/application | Applicant | TBD — form-level verification still required | YES |
-| Unreal Engine relevance | Project proposal + repository integration artifacts | Project | PARTIAL — source integration present; build/runtime proof missing | YES |
+| Current MegaGrants cycle/deadline | Official Epic MegaGrants page | Application | VERIFIED — rechecked 2026-09-04; Cycle 2 closes Sep 4, 2026 at 11:59 PM ET | YES |
+| Applicant eligibility | Official Epic FAQ/application | Applicant | TBD — live form-level verification still required | YES |
+| Unreal Engine relevance | Project proposal + repository integration artifacts | Project | VERIFIED AT SOURCE LEVEL — runtime proof remains a funded validation objective | YES |
 | Concrete project scope | Project plan + prototype status | Project | VERIFIED — bounded WP1–WP4 scope | NO |
 | Milestones and deliverables | Project plan | Project | VERIFIED — M1–M4 defined | NO |
-| Baseline and KPI methodology | KPI validation plan | Project | VERIFIED — methodology defined; results unavailable | YES |
-| Budget and requested amount | Budget framework + current program rules | Application | PARTIAL — €28,800 labor planning envelope; final request pending non-labor/allowability check | YES |
-| Evidence for technical claims | Claim/evidence registers + source implementation | Project | PARTIAL — source evidence present; runtime measurements missing | YES |
-| Applicant identity/contact data | Applicant data template | Applicant | PARTIAL — type, country, email, solo status and funding disclosures confirmed; legal/form fields remain | YES |
+| Baseline and KPI methodology | KPI validation plan | Project | VERIFIED — methodology defined; results unavailable and correctly positioned as future validation | YES |
+| Budget and requested amount | Budget framework + current program rules | Application | PARTIAL — €28,800 labor planning envelope; final request pending allowable-cost/form verification | YES |
+| Evidence for technical claims | Claim/evidence registers + source implementation | Project | VERIFIED AT SOURCE LEVEL — runtime measurements remain unavailable and are not claimed as results | YES |
+| Applicant identity/contact data | Applicant data template | Applicant | PARTIAL — type, country, email, solo status and funding disclosures confirmed; legal/form identity remains applicant-controlled | YES |
 | Previous/other funding disclosures | Applicant confirmation | Applicant | VERIFIED — previous MegaGrant: No; other project funding: No | NO |
-| Demo / supporting material | Actual project artifacts | Project | PARTIAL — source artifacts present; runtime demonstrator TBD | YES |
-| Final claim audit | Claim audit | Project | UPDATED — runtime claims remain locked as targets/unknown | YES |
-| Reviewer red-team | Reviewer objections | Project | EXECUTED — remaining gaps documented | YES |
+| Demo / supporting material | Actual project artifacts | Project | PARTIAL — source artifacts present; runtime demonstrator remains a grant-funded objective | YES |
+| Final claim audit | Claim audit | Project | UPDATED — unsupported runtime/result claims locked as targets/unknown | YES |
+| Reviewer red-team | Reviewer objections | Project | EXECUTED — remaining evidence/form gaps documented | YES |
 | Final dossier status | `14_FINAL_DOSSIER_STATUS.md` | Project/Application | ACTIVE CONTROL POINT | YES |
 
 ## Current evidence position
 
 The repository contains a source-implemented OMEGA-X Unreal Engine plugin vertical slice and a minimal C++ verification host. The source evidence covers deterministic/default-deny policy logic, the explicit `Geometry.TransformActor` capability, bounded geometry safety checks, post-change verification, a bounded recovery attempt, and defined negative test cases.
 
-The following are **not** currently established by direct runtime evidence: successful Unreal Engine compilation, plugin loading, executed automation tests, positive actor mutation, successful runtime recovery, measured performance improvement, and an end-to-end agent workflow.
+The following are **not** currently established by direct runtime evidence: successful Unreal Engine compilation, plugin loading, executed automation tests, positive actor mutation, successful runtime recovery, measured performance improvement, and an end-to-end agent workflow. These remain development and validation objectives rather than achieved results.
 
 ## Confirmed applicant inputs
 
@@ -47,8 +47,14 @@ A blocking item may not be marked complete without supporting evidence or explic
 
 ## Current timing
 
-The official Epic MegaGrants program information currently lists 2026 Cycle 2 submissions through September 4, 2026, closing at 11:59 PM ET. The deadline must be rechecked immediately before submission. citeturn0news0
+The official Epic MegaGrants program page was rechecked on 2026-09-04 and currently lists Cycle 2 submissions through September 4, 2026, closing at 11:59 PM ET. citeturn0news0
 
 ## Completion rule
 
 The dossier is ready only when every blocking item has verified evidence or explicit applicant confirmation, followed by a final claim audit and reviewer red-team against the actual final application text.
+
+## Final integrity decision
+
+The absence of Unreal runtime evidence does **not** authorize a runtime-success claim. If the live submission is made without new runtime evidence, the application must remain explicitly framed as a development-and-validation proposal whose funded work includes Unreal build verification, runtime testing, benchmarking, demonstrator production, and evidence capture.
+
+No technical claim should be upgraded merely to make the application appear more mature.
