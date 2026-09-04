@@ -7,6 +7,7 @@ This register prevents project language from drifting from evidence.
 ## Epistemic classes
 
 - **VERIFIED FACT** — directly supported by a primary source, repository evidence, or reproducible measurement.
+- **PROJECT DESIGN** — an explicitly defined architecture, workflow, control, or specification; not evidence that the design has been fully implemented or validated.
 - **SOURCE CLAIM** — assertion made by a third party or project material that still requires validation.
 - **OBSERVATION** — directly observed project state.
 - **MEASUREMENT** — numeric result produced by a defined measurement procedure.
