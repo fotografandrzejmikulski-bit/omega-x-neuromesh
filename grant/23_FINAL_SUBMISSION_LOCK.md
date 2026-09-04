@@ -6,7 +6,7 @@
 
 ## Current decision
 
-The project documentation and grant narrative are sufficiently synchronized to proceed to the final application-entry stage, provided that unresolved factual gates are not silently converted into claims.
+The project documentation and grant narrative are synchronized and the applicant contact data supplied in the live-form preparation stage is now recorded. The final applicant form entry pack is prepared. Submission itself remains dependent only on live-form choices and the few factual items that cannot be inferred without risking fabrication.
 
 ## Evidence boundary
 
@@ -22,6 +22,7 @@ The project documentation and grant narrative are sufficiently synchronized to p
 - A bounded recovery attempt exists.
 - Negative test cases are defined.
 - Grant work is constrained to WP1–WP4.
+- Static project-overview media artifact has been added to the repository.
 
 ### Not runtime-verified
 
@@ -47,7 +48,9 @@ Current planning scenarios:
 
 **Preferred planning scenario:** FULL / €28,800 labor envelope.
 
-This amount is not yet a program-verified final grant request. No unverified non-labor cost is included.
+A 2026-09-04 mid-market reference rate of approximately €1 = $1.16245 gives approximately $33,479 for €28,800. This is a planning conversion only. The live Epic funding-range field controls the final selected USD range.
+
+No unverified non-labor cost is included.
 
 ## Applicant-data lock
 
@@ -57,7 +60,9 @@ Confirmed:
 - Individual / natural person.
 - Poland.
 - Contact email: mojealterego21@gmail.com.
-- Solo developer.
+- Phone: +48 455 575 337.
+- Relevant social media: https://www.viewbug.com/member/andrzejM.
+- Solo developer / team size 1.
 - Previous Epic MegaGrant: No.
 - Other project funding: No.
 - Planning duration: 6 months, with objective to finish earlier without reducing validation quality.
@@ -65,28 +70,41 @@ Confirmed:
 
 Still applicant/form controlled:
 
+- Truthful selection and explanation for “How did you hear about Epic MegaGrants?”
+- Exact live Project Type dropdown option.
+- Reviewer-accessible Project media link.
+- Exact live Project phase option.
+- Community/open-source selection based on actual public contribution status.
 - Any required Epic/Unreal account information.
 - Any mandatory website/portfolio field.
 - Any form-specific legal, tax, payment, or eligibility declarations.
 
-The confirmed applicant/legal name must be used where the form requests identity; no repository username, email address, or project authorship assumption may substitute for required legal/form fields.
+## Final applicant form pack
+
+`grant/24_FINAL_APPLICANT_FORM_ENTRY_PACK.md` contains the prepared field-by-field answers, final narrative text, budget wording, and explicit blockers.
+
+## Repository visibility constraint
+
+The GitHub repository is currently **PRIVATE**. Therefore its URL must not be treated as reviewer-accessible project media without an appropriate access mechanism. The application needs a public/reviewer-accessible media link or another accepted mechanism before submission.
 
 ## Final submission sequence
 
 1. Open the live Epic application form.
 2. Verify all eligibility and mandatory fields directly in the form.
-3. Verify the applicable requested-funding guidance shown by the live application/process.
-4. Enter only confirmed applicant/legal data.
-5. Use the repository as the primary technical/project reference.
-6. Preserve the source-versus-runtime evidence boundary in every technical answer.
-7. Recalculate the final requested amount from the actual allowable cost basis.
-8. Apply the final claim audit to the exact entered text.
-9. Apply the reviewer red-team to the exact entered text.
-10. Submit before the verified deadline.
+3. Enter only confirmed applicant/legal data.
+4. Select the truthful “How did you hear” option and matching explanation.
+5. Select the exact truthful Project Type and Project phase options.
+6. Provide reviewer-accessible project media.
+7. Use the prepared project narrative and unique-features text.
+8. Select the USD funding range containing approximately $33,500, subject to the live form.
+9. Preserve the source-versus-runtime evidence boundary in every technical answer.
+10. Apply the final claim audit to the exact entered text.
+11. Apply the reviewer red-team to the exact entered text.
+12. Submit before the verified deadline.
 
 ## Deadline control
 
-The official Epic MegaGrants page was rechecked on 2026-09-04. Cycle 2 submissions run through September 4, 2026 at 11:59 PM ET; Epic's localized European pages show the corresponding Central European deadline as September 5, 2026 at 05:59 CEST. This timing must be treated as a submission-control fact and rechecked immediately before final submission. citeturn0search0turn0search4
+The official Epic MegaGrants page was rechecked on 2026-09-04. Cycle 2 submissions run through September 4, 2026 at 11:59 PM ET; Epic localized European pages show the corresponding Central European deadline as September 5, 2026 at 05:59 CEST. Treat the English official schedule as the controlling submission deadline and recheck immediately before submission. citeturn0search0turn0search2
 
 ## Prohibited actions at finalization
 
