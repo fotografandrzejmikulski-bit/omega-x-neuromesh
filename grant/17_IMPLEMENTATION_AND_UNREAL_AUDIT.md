@@ -11,69 +11,77 @@ This audit establishes what can and cannot currently be proven from the reposito
 
 It is deliberately evidence-first. Documentation describing a proposed system is not treated as proof that the system has been implemented.
 
-## 2. Repository-tree finding
+## 2. Current repository finding
 
-The current `main` tree was inspected recursively.
+The repository now contains a minimal Unreal Engine plugin implementation under `Plugins/OmegaX/`, including:
 
-The repository contains documentation and control artifacts including:
+- `OmegaX.uplugin`
+- `Source/OmegaX/OmegaX.Build.cs`
+- `Source/OmegaX/Private/OmegaXModule.cpp`
+- `Source/OmegaX/Public/OmegaXPolicy.h`
+- `Source/OmegaX/Private/OmegaXPolicy.cpp`
+- `Source/OmegaX/Private/OmegaXPolicyTests.cpp`
 
-- `README.md`
-- `ROADMAP.md`
-- `claims/`
-- `decisions/`
-- `docs/ARCHITECTURE.md`
-- `security/THREAT_MODEL.md`
-- `quality/`
-- `grant/`
-
-The recursive tree does **not** contain an Unreal Engine `.uproject` file, an Unreal Engine `.uplugin` file, a conventional Unreal `Source/` implementation tree, a `Content/` project tree, or an identifiable automated test implementation.
+The repository also contains `docs/UE_BUILD_VERIFICATION.md`, which defines the evidence protocol for engine-level verification.
 
 ## 3. Implementation status
 
-**Status: NOT PROVEN / CURRENTLY UNIMPLEMENTED IN THIS REPOSITORY**
+**Status: SOURCE IMPLEMENTATION PRESENT / BUILD NOT VERIFIED**
 
-The repository currently demonstrates a structured specification and grant/evidence-control system, not a verified working OMEGA-X / NeuroMesh runtime implementation.
+The repository demonstrates an actual Unreal plugin source skeleton and a deterministic policy primitive. This is stronger evidence than a specification-only repository, but it does not establish successful compilation or runtime operation.
 
-This does not prove that no implementation exists outside this repository. It proves only that such an implementation is not present in the audited `main` tree.
+The current policy primitive is intentionally conservative: unknown capabilities are denied by default, and requests with missing capability/actor data or approval requirements are denied. A positive allow-path has not yet been introduced because the first gate is build verification of the minimal security primitive.
 
 ## 4. Unreal Engine integration status
 
-**Status: NOT PROVEN**
+**Status: NOT YET PROVEN**
 
-No concrete Unreal Engine project artifact or plugin artifact was found in the audited repository tree. Therefore the following claims must remain unverified until direct evidence is added:
+The plugin structure follows Unreal's documented module model, including a `.uplugin`, `Build.cs`, `Private`/`Public` source structure, and a module implementation. Epic's documentation states that Unreal modules require these build/module components and are discovered by Unreal Build Tool. This repository has not yet captured direct UBT compilation or runtime evidence.
 
-- current operational Unreal Engine integration;
+Therefore the following remain unverified:
+
+- successful compilation;
+- successful plugin loading;
+- execution of the automation test;
+- working policy behavior inside a running Unreal project;
 - working geometry-processing workflow inside Unreal Engine;
-- working OMEGA-X policy/governance integration with Unreal Engine actions;
 - functioning demonstrator;
 - measured Unreal Engine performance or quality results.
 
-## 5. Consequence for the MegaGrants submission
+## 5. Test status
 
-The project must currently be positioned as a **development-and-validation proposal**, not as a completed Unreal Engine product or already-demonstrated system.
+A negative-path Unreal automation test is present at:
 
-The application may describe the intended architecture, planned work packages, validation method, and target outcomes. It must not present the missing implementation, demonstrator, benchmark results, or Unreal integration as achieved facts.
+`Plugins/OmegaX/Source/OmegaX/Private/OmegaXPolicyTests.cpp`
 
-## 6. Required evidence gates
+The test covers:
 
-Before the final application and cover letter are declared final, the following should be closed where applicable:
+1. missing capability → denied;
+2. missing actor → denied;
+3. approval-required request before approval → denied;
+4. unknown capability → denied by default.
+
+**Execution status: UNKNOWN.** The test definition must not be reported as a passed test until Unreal Engine execution output is captured.
+
+## 6. Consequence for the MegaGrants submission
+
+The project may now truthfully state that a minimal Unreal plugin implementation has been started and that the repository contains source-level policy and negative-test artifacts. It must still be positioned as a development-and-validation project rather than a completed Unreal Engine product.
+
+No numerical performance result, runtime success, demonstrator completion, or security guarantee may be presented as achieved without direct evidence.
+
+## 7. Required next evidence gates
 
 1. concrete Unreal Engine version/context;
-2. project or plugin artifact;
-3. demonstrable workflow;
-4. source code or equivalent implementation evidence;
-5. reproducible build/run instructions;
-6. baseline and measured benchmark results;
-7. failure/recovery test evidence;
-8. evidence links or media permitted by the application;
-9. factual applicant/eligibility data;
-10. defensible project cost and funding request.
-
-## 7. Decision
-
-No unsupported implementation claim will be promoted into the final grant narrative.
-
-The next engineering stage is therefore **evidence acquisition and prototype implementation**, not rhetorical strengthening of the application.
+2. valid host project or equivalent test environment;
+3. successful UBT compilation;
+4. successful plugin load;
+5. executed automation-test result;
+6. failure/recovery evidence;
+7. minimal demonstrator workflow;
+8. baseline and measured benchmark results;
+9. evidence links/media permitted by the application;
+10. factual applicant/eligibility data;
+11. defensible project cost and funding request.
 
 ## 8. Audit result
 
@@ -83,14 +91,18 @@ The next engineering stage is therefore **evidence acquisition and prototype imp
 | Architecture documentation | VERIFIED AS DOCUMENTATION |
 | Security/threat model | VERIFIED AS DOCUMENTATION |
 | Grant documentation | VERIFIED AS DOCUMENTATION |
-| Unreal `.uproject` present | NOT FOUND |
-| Unreal `.uplugin` present | NOT FOUND |
-| Unreal `Source/` implementation | NOT FOUND |
-| Unreal `Content/` project | NOT FOUND |
+| Unreal `.uplugin` present | VERIFIED |
+| Unreal `Build.cs` present | VERIFIED |
+| Unreal module implementation present | VERIFIED |
+| Unreal policy source present | VERIFIED |
+| Unreal negative-test definition present | VERIFIED |
+| Unreal compilation | UNKNOWN |
+| Plugin load | UNKNOWN |
+| Automation test execution | UNKNOWN |
 | Runtime implementation proven | NO |
 | Unreal integration proven | NO |
 | Demonstrator proven | NO |
 | Benchmarks proven | NO |
 | Final grant readiness | BLOCKED |
 
-**Integrity rule:** absence of repository evidence is recorded as UNKNOWN/NOT PROVEN, never converted into a negative claim about work performed elsewhere.
+**Integrity rule:** repository source presence is recorded separately from execution evidence. Missing execution evidence remains UNKNOWN/NOT PROVEN and is never converted into a negative claim about work performed elsewhere.
