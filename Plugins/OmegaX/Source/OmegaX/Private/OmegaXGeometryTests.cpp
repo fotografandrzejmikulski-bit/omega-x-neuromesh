@@ -59,3 +59,23 @@ bool FOmegaXGeometrySafetyBoundTest::RunTest(const FString& Parameters)
     TestEqual(TEXT("Safety bound is enforced"), Result.Reason, FString(TEXT("Translation exceeds safety limit")));
     return true;
 }
+
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(
+    FOmegaXGeometryNaNTranslationTest,
+    "OmegaX.Geometry.NaNTranslationDenied",
+    EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::SmokeFilter)
+
+bool FOmegaXGeometryNaNTranslationTest::RunTest(const FString& Parameters)
+{
+    OmegaX::FGeometryTransformRequest Request;
+    Request.Target = nullptr;
+    Request.Translation = FVector(TNumericLimits<float>::QuietNaN(), 0.0f, 0.0f);
+    Request.PolicyRequest.Capability = TEXT("Geometry.TransformActor");
+    Request.PolicyRequest.Actor = TEXT("TestActor");
+
+    const OmegaX::FGeometryTransformResult Result = OmegaX::FGeometryTransform::Apply(Request);
+
+    TestFalse(TEXT("NaN translation is not applied"), Result.bApplied);
+    TestEqual(TEXT("NaN input is rejected"), Result.Reason, FString(TEXT("Translation contains NaN")));
+    return true;
+}
