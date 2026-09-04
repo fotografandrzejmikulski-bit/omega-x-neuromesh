@@ -53,6 +53,7 @@ This amount is not yet a program-verified final grant request. No unverified non
 
 Confirmed:
 
+- Applicant / legal name: Andrzej Mikulski.
 - Individual / natural person.
 - Poland.
 - Contact email: mojealterego21@gmail.com.
@@ -64,12 +65,11 @@ Confirmed:
 
 Still applicant/form controlled:
 
-- Exact legal name / identity format.
 - Any required Epic/Unreal account information.
 - Any mandatory website/portfolio field.
 - Any form-specific legal, tax, payment, or eligibility declarations.
 
-No repository username, email address, or project authorship assumption may substitute for legal/form identity.
+The confirmed applicant/legal name must be used where the form requests identity; no repository username, email address, or project authorship assumption may substitute for required legal/form fields.
 
 ## Final submission sequence
 
@@ -83,6 +83,10 @@ No repository username, email address, or project authorship assumption may subs
 8. Apply the final claim audit to the exact entered text.
 9. Apply the reviewer red-team to the exact entered text.
 10. Submit before the verified deadline.
+
+## Deadline control
+
+The official Epic MegaGrants page was rechecked on 2026-09-04. Cycle 2 submissions run through September 4, 2026 at 11:59 PM ET; Epic's localized European pages show the corresponding Central European deadline as September 5, 2026 at 05:59 CEST. This timing must be treated as a submission-control fact and rechecked immediately before final submission. citeturn0search0turn0search4
 
 ## Prohibited actions at finalization
 
