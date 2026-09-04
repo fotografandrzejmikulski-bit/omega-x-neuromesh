@@ -4,7 +4,7 @@
 
 **Program:** Epic MegaGrants
 **Cycle:** 2026 Cycle 2
-**Verification date:** 2026-09-03
+**Verification date:** 2026-09-04
 **Source priority:** Official Epic Games / Unreal Engine sources
 
 ## Verified program facts
