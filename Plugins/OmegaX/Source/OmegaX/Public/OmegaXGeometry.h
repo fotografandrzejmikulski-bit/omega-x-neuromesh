@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "OmegaXPolicy.h"
 
 class AActor;
 
@@ -10,6 +11,7 @@ namespace OmegaX
     {
         AActor* Target = nullptr;
         FVector Translation = FVector::ZeroVector;
+        FPolicyRequest PolicyRequest;
     };
 
     struct FGeometryTransformResult
@@ -22,12 +24,14 @@ namespace OmegaX
 
     /**
      * Minimal controlled geometry operation.
-     * This operation only translates a resolved Actor; policy authorization
-     * must be performed before calling Apply.
+     * Policy authorization is enforced inside Apply before mutation.
      */
     class OMEGAX_API FGeometryTransform
     {
     public:
         static FGeometryTransformResult Apply(const FGeometryTransformRequest& Request);
+
+    private:
+        static constexpr float MaxTranslationMagnitude = 1000.0f;
     };
 }
