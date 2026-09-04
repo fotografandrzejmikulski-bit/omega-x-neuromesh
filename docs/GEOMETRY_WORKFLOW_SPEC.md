@@ -2,45 +2,48 @@
 
 ## Status
 
-**SPECIFICATION ONLY — NOT IMPLEMENTATION PROOF**
+**SOURCE IMPLEMENTATION PRESENT — RUNTIME NOT VERIFIED**
 
-This document defines the smallest geometry-oriented workflow that can later be implemented and measured inside Unreal Engine. It deliberately does not claim that the workflow currently executes.
+This document defines the smallest geometry-oriented workflow implemented in the current source vertical slice and the evidence required to promote it to runtime-verified status.
 
 ## Objective
 
 Provide one bounded geometry operation that demonstrates the OMEGA-X control model without introducing unnecessary editor automation or broad agent capabilities.
 
-## Proposed operation
+## Implemented operation
 
 `Geometry.TransformActor`
 
-The operation accepts a narrowly defined request:
+The current source request contains:
 
-- target actor identifier;
+- target actor pointer;
 - translation vector;
-- optional rotation and scale parameters;
-- requesting actor/agent identity;
-- policy context;
-- approval state.
+- requesting actor/agent identity string;
+- capability/policy context;
+- approval-required flag.
 
-The first demonstrator should use translation only. Rotation and scale remain explicitly out of scope until the translation path is verified.
+The implemented demonstrator path is translation only. Rotation and scale remain out of scope until the translation path is verified.
 
 ## Required execution chain
 
 `REQUEST → POLICY EVALUATION → SAFETY VALIDATION → AUTHORIZATION → OPTIONAL HUMAN APPROVAL → SNAPSHOT → APPLY → VERIFY → AUDIT`
 
-A request must not mutate Unreal Engine state when policy evaluation returns `Deny`.
+In the current source implementation, policy evaluation is enforced inside the geometry operation before target access or mutation. Safety validation then rejects invalid translation input and excessive translation magnitude. The current primitive captures pre-change location and verifies the observed post-change location.
+
+Persistent audit, transactional rollback, and an authenticated identity/trust boundary are not implemented in this vertical slice.
 
 ## Safety constraints
 
 1. Empty or malformed capability is denied.
 2. Empty requester identity is denied.
 3. Unknown capabilities are denied by default.
-4. Requests requiring approval are denied until approval is explicitly represented.
-5. Target actor must be resolvable before mutation.
-6. Translation magnitude should have an explicit configurable limit in the first implementation.
-7. Mutation should preserve enough pre-change state to restore the actor where feasible.
-8. Verification must compare expected and observed post-change state before the operation is considered successful.
+4. Requests marked as requiring approval are denied until an approval mechanism exists; the current v0.1 primitive does not yet model a separately authenticated approval grant.
+5. Target actor must be non-null before mutation.
+6. Translation containing NaN is rejected.
+7. Translation magnitude above 1000 Unreal units is rejected.
+8. Mutation captures pre-change location.
+9. Verification compares expected and observed post-change location before reporting success.
+10. The current requester identity is an input field, not an authenticated principal. It must not be represented as proof of caller authenticity.
 
 ## Evidence to capture
 
@@ -66,13 +69,14 @@ For every demonstrator run record:
 - missing capability → `Deny`;
 - missing requester → `Deny`;
 - unknown capability → `Deny`;
-- approval-required request without approval → `Deny`;
+- approval-required request without an explicit approval mechanism → `Deny`;
 - unresolved actor → no mutation;
-- excessive translation → no mutation.
+- excessive translation → no mutation;
+- NaN translation → no mutation.
 
 ### Positive functional case
 
-After an explicit allow policy is implemented and verified, a permitted translation request should move exactly the selected actor by the requested bounded vector and pass post-mutation verification.
+After the source path is build-verified in Unreal Engine, a permitted translation request should move exactly the selected actor by the requested bounded vector and pass post-mutation verification.
 
 ## Measurement plan
 
@@ -102,8 +106,12 @@ Those capabilities require separate threat analysis, authorization rules, tests,
 
 ## Current evidence state
 
-- Specification: **PRESENT**
-- Unreal implementation: **NOT VERIFIED**
+- Source implementation: **PRESENT**
+- Source-level negative tests: **DEFINED**
+- Unreal implementation: **NOT BUILD-VERIFIED**
 - Runtime execution: **UNKNOWN**
+- Authenticated requester identity: **NOT IMPLEMENTED**
+- Persistent audit: **NOT IMPLEMENTED**
+- Transactional rollback: **NOT IMPLEMENTED**
 - Benchmark: **NOT AVAILABLE**
 - Demonstrator evidence: **NOT AVAILABLE**
