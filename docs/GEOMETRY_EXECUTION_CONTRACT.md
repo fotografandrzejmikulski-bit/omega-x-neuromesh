@@ -23,6 +23,7 @@ REQUEST
   → SNAPSHOT
   → APPLY
   → POST-CHANGE VERIFICATION
+  → RECOVERY ON VERIFICATION FAILURE
   → AUDIT
 ```
 
@@ -33,19 +34,22 @@ Policy evaluation is enforced inside the geometry operation before any state mut
 The implementation:
 
 - evaluates policy before touching the target;
-- rejects a null target;
+- rejects an invalid or null target through Unreal object validity checking;
 - rejects NaN translation input;
+- rejects other non-finite translation input;
 - rejects translation whose magnitude exceeds the v0.1 safety limit of 1000 Unreal units;
 - records the pre-change location;
+- rejects a non-finite resulting location before mutation;
 - applies translation only;
 - reads the resulting location after mutation;
 - reports whether the resulting location matches the requested value within Unreal's small-number tolerance;
+- attempts recovery to the pre-change location when post-change verification fails;
 - performs no arbitrary property mutation;
 - performs no filesystem, network, credential, Blueprint, or Python execution.
 
 ## Current limitation
 
-This contract does not yet provide a complete transactional rollback mechanism or persistent audit store. Those are validation targets, not completed capabilities.
+The source now contains a bounded recovery attempt for post-change verification failure. This is not yet equivalent to a fully transactional rollback guarantee: the recovery operation itself is not independently guaranteed until exercised and verified in a real Unreal runtime. Persistent audit storage and authenticated caller/approval identity remain unimplemented.
 
 ## Evidence classification
 
@@ -54,13 +58,17 @@ This contract does not yet provide a complete transactional rollback mechanism o
 | Geometry operation header exists | VERIFIED FACT | PASS |
 | Geometry operation implementation exists | VERIFIED FACT | PASS |
 | Policy evaluation is enforced inside the operation | VERIFIED FACT | PASS |
-| Null-target negative test exists | VERIFIED FACT | PASS |
-| Safety bound is implemented in source | VERIFIED FACT | PASS |
+| Null/invalid-target rejection exists | VERIFIED FACT | PASS |
+| NaN and non-finite input rejection is implemented in source | VERIFIED FACT | PASS |
+| Translation safety bound is implemented in source | VERIFIED FACT | PASS |
+| Post-change recovery attempt is implemented in source | VERIFIED FACT | PASS |
 | Unreal compilation succeeds | MEASUREMENT | UNKNOWN |
 | Positive Actor mutation executes in Unreal | MEASUREMENT | UNKNOWN |
 | Post-change verification passes in Unreal | MEASUREMENT | UNKNOWN |
-| Rollback is implemented | TARGET | NOT IMPLEMENTED |
+| Recovery succeeds after forced verification failure | MEASUREMENT | UNKNOWN |
 | Persistent audit trail is implemented | TARGET | NOT IMPLEMENTED |
+| Caller identity is authenticated | TARGET | NOT IMPLEMENTED |
+| Human approval is cryptographically/authentically represented | TARGET | NOT IMPLEMENTED |
 
 ## Next gate
 
