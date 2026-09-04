@@ -5,13 +5,19 @@
 
 ## 1. Verified repository change
 
-The repository now contains the first concrete Unreal Engine plugin skeleton:
+The repository now contains the first concrete Unreal Engine plugin vertical slice:
 
 - `Plugins/OmegaX/OmegaX.uplugin`
 - `Plugins/OmegaX/Source/OmegaX/OmegaX.Build.cs`
 - `Plugins/OmegaX/Source/OmegaX/Public/OmegaXPolicy.h`
 - `Plugins/OmegaX/Source/OmegaX/Private/OmegaXPolicy.cpp`
 - `Plugins/OmegaX/Source/OmegaX/Private/OmegaXPolicyTests.cpp`
+- `Plugins/OmegaX/Source/OmegaX/Private/OmegaXModule.cpp`
+- `Plugins/OmegaX/Source/OmegaX/Public/OmegaXGeometry.h`
+- `Plugins/OmegaX/Source/OmegaX/Private/OmegaXGeometry.cpp`
+- `Plugins/OmegaX/Source/OmegaX/Private/OmegaXGeometryTests.cpp`
+
+The module now declares `Core`, `CoreUObject`, and `Engine` dependencies required by the geometry implementation.
 
 ## 2. Implemented behavior
 
@@ -26,7 +32,16 @@ A request is denied when:
 
 The only explicitly authorized v0.1 capability is `Geometry.TransformActor`. All other capabilities remain denied by default.
 
-This is a constrained security primitive, not a complete authorization system.
+The geometry mutation primitive enforces policy internally before mutation and applies additional safety validation:
+
+- NaN translation is rejected;
+- translation magnitude above 1000 Unreal units is rejected;
+- null targets are rejected;
+- pre-change location is captured;
+- translation is applied only after the gates pass;
+- post-change location is read back and compared for verification.
+
+This is a constrained security and geometry primitive, not a complete authorization or transaction system.
 
 ## 3. Evidence classification
 
@@ -37,11 +52,14 @@ This is a constrained security primitive, not a complete authorization system.
 | Policy API exists | VERIFIED FACT | PASS |
 | Default-deny behavior is implemented in source | VERIFIED FACT | PASS |
 | Explicit `Geometry.TransformActor` allowlist entry exists in source | VERIFIED FACT | PASS |
+| Geometry mutation primitive exists in source | VERIFIED FACT | PASS |
+| Policy enforcement occurs inside geometry operation | VERIFIED FACT | PASS |
+| Geometry safety checks exist in source | VERIFIED FACT | PASS |
 | Negative-case tests are defined | VERIFIED FACT | PASS |
-| Positive authorization test is defined | VERIFIED FACT | PASS |
+| Positive authorization path is defined in source | VERIFIED FACT | PASS |
 | Plugin compiles in a real Unreal Engine environment | MEASUREMENT | UNKNOWN |
 | Automation tests pass in Unreal Engine | MEASUREMENT | UNKNOWN |
-| Geometry workflow exists | TARGET | NOT IMPLEMENTED |
+| Positive Actor mutation executes in Unreal Engine | MEASUREMENT | UNKNOWN |
 | End-to-end agent workflow exists | TARGET | NOT IMPLEMENTED |
 | Performance improvement exists | MEASUREMENT | NOT AVAILABLE |
 
@@ -57,9 +75,11 @@ Required evidence:
 - successful automation-test execution;
 - captured test output;
 - minimal Unreal project demonstrating plugin loading;
-- failure-case evidence for denied requests;
-- positive-case evidence that `Geometry.TransformActor` is authorized by the policy gate.
+- denied-request evidence;
+- positive-case evidence that `Geometry.TransformActor` is authorized by the policy gate;
+- positive geometry execution and post-change verification evidence;
+- repeatable benchmark evidence after functional verification.
 
 ## 5. Scope rule
 
-Do not expand the prototype into a broad agent platform before this minimal security primitive is build-verified. The next implementation increment should add only the smallest capability required to demonstrate a controlled Unreal workflow and its measurable validation.
+Do not expand the prototype into a broad agent platform before this minimal security/geometry primitive is build-verified. The next implementation increment should add only the smallest verification harness required to demonstrate the controlled Unreal workflow and its measurable validation.
