@@ -9,7 +9,9 @@ public class OmegaX : ModuleRules
         PublicDependencyModuleNames.AddRange(
             new[]
             {
-                "Core"
+                "Core",
+                "CoreUObject",
+                "Engine"
             }
         );
     }
